@@ -2,7 +2,6 @@ import { FaHeart, FaShoppingCart } from "react-icons/fa";
 import { TfiReload } from "react-icons/tfi";
 
 const ArrivalsItem = ({ item }) => {
-  console.log(item);
   return (
     <div className="w-full lg:w-[24%] py-5">
       <div className="relative group overflow-hidden">
