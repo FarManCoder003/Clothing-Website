@@ -4,6 +4,7 @@ import { RxCross2 } from "react-icons/rx";
 import Logo from "../assets/logo.png";
 import Container from "./Container";
 import Flex from "./Flex";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   let [show, setShow] = useState(false);
@@ -23,10 +24,10 @@ const Header = () => {
               }`}
             >
               <li className="font-sans text-[16px] lg:text-[#767676] text-[white] hover:text-[#262626]">
-                Home
+                <Link to="/">Home</Link>
               </li>
               <li className="font-sans text-[16px] lg:text-[#767676] text-[white] hover:text-[#262626]">
-                Shop
+                <Link to="/shop">Shop</Link>
               </li>
               <li className="font-sans text-[16px] lg:text-[#767676] text-[white] hover:text-[#262626]">
                 About

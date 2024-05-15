@@ -1,19 +1,11 @@
 import { IoReload } from "react-icons/io5";
 import { TbTruckDelivery } from "react-icons/tb";
 import Slider from "react-slick";
-import Ad1 from "../assets/Ad 1.png";
-import Ad2 from "../assets/Ad 2.png";
-import Ad3 from "../assets/Ad 3.png";
-import Ad4 from "../assets/Ad 4.png";
 import BanImg from "../assets/banner.png";
-import ArrivalsItem from "./ArrivalsItem";
 import Container from "./Container";
-import { apiData } from "./ContextApi";
 import Flex from "./Flex";
-import { useContext } from "react";
 
 const Banner = () => {
-  let data = useContext(apiData);
   const settings = {
     dots: true,
     infinite: true,
@@ -52,19 +44,19 @@ const Banner = () => {
     ),
   };
   return (
-    <>
+    <section>
       <Slider {...settings}>
-        <div className="w-full">
-          <img src={BanImg} alt="banner" />
+        <div>
+          <img src={BanImg} alt="banner" className="w-full" />
         </div>
         <div className="w-full">
-          <img src={BanImg} alt="banner" />
+          <img src={BanImg} alt="banner" className="w-full" />
         </div>
         <div className="w-full">
-          <img src={BanImg} alt="banner" />
+          <img src={BanImg} alt="banner" className="w-full" />
         </div>
         <div className="w-full">
-          <img src={BanImg} alt="banner" />
+          <img src={BanImg} alt="banner" className="w-full" />
         </div>
       </Slider>
       <Container>
@@ -94,28 +86,8 @@ const Banner = () => {
             </div>
           </div>
         </Flex>
-        <Flex className="justify-between py-[35px] lg:py-[128px]">
-          <div className="w-1/2">
-            <img src={Ad1} alt="" className="w-full h-full" />
-          </div>
-          <div className="w-1/2  lg:ml-[40px] w-fill ml-[20px]">
-            <img src={Ad2} alt="" className="pb-[20px] lg:pb-[40px]" />
-            <img src={Ad3} alt="" />
-          </div>
-        </Flex>
-        <div className="font-sans font-bold text-[39px] text-[#262626]">
-          New Arrivals
-        </div>
-        <Flex className="justify-between flex-wrap">
-          {data.map((items) => (
-            <ArrivalsItem item={items} />
-          ))}
-        </Flex>
-        <div className="w-full lg:my-[128px] my-[48px]">
-          <img src={Ad4} alt="" />
-        </div>
       </Container>
-    </>
+    </section>
   );
 };
 
