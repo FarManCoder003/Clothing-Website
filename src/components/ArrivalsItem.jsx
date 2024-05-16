@@ -8,7 +8,7 @@ const ArrivalsItem = ({ item }) => {
         <div className="relative group overflow-hidden">
           <img
             src={item.thumbnail}
-            className="lg:w-[350px] xl:w-[376px] lg:h-[350px]"
+            className="lg:w-[350px] lg:h-[350px]"
             alt=""
           />
           <div className="bg-white absolute left-0 h-[130px] duration-300 ease-in-out bottom-[-120px] w-full group-hover:bottom-[0px] flex items-center justify-end">

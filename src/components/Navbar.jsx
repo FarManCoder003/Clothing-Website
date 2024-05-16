@@ -36,7 +36,7 @@ const Navbar = () => {
   }, [cartShow, usercartShow, userShow]);
 
   return (
-    <nav className="bg-[#F5F5F3] py-4">
+    <nav className="bg-[#F5F5F3] py-4 lg:pt-[65px]">
       <Container>
         <Flex className="items-center">
           <div className="w-[30%] relative">
@@ -74,9 +74,9 @@ const Navbar = () => {
           <div className="w-[40%]">
             <div className="relative">
               <input
-                placeholder="Search..."
+                placeholder="Search Products"
                 type="search"
-                className="w-full h-6 lg:h-[50px] border-[1px] border-[#262626] outline-none px-2"
+                className="w-full h-6 lg:h-[50px] font-sans font-normal text-[#C4C4C4] text-[14px]  outline-none px-2"
               />
               <div className="absolute top-[50%] lg:right-4 right-2 translate-y-[-50%]">
                 <FaSearch />

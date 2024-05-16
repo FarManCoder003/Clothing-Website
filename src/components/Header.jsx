@@ -9,9 +9,9 @@ import { Link } from "react-router-dom";
 const Header = () => {
   let [show, setShow] = useState(false);
   return (
-    <header className="">
+    <header className="fixed z-[9999] bg-[white] w-[100%] ">
       <Container>
-        <Flex className="justify-between items-center lg:h-[80px] lg:py-0 py-3">
+        <Flex className="justify-between items-center py-3">
           <div className="w-1/3">
             <img src={Logo} alt="logo" />
           </div>
