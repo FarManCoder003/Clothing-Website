@@ -196,7 +196,7 @@ const Product = () => {
                   </div>
                 </div>
               </Flex>
-              <div className="flex justify-between flex-wrap">
+              <div className="flex justify-between flex-wrap mt-[60px]">
                 <Post allData={allData} />
               </div>
               <div className="">
