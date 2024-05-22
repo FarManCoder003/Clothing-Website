@@ -30,15 +30,16 @@ const Product = () => {
   let paginate = (pageNumber) => {
     setCurrentpage(pageNumber + 1);
   };
-  let next = () => {
-    if (currentPage < pageNumber.length) {
-      setCurrentpage((state) => state + 1);
-    }
-  };
 
   let prev = () => {
     if (currentPage > 1) {
       setCurrentpage((state) => state - 1);
+    }
+  };
+
+  let next = () => {
+    if (currentPage < pageNumber.length) {
+      setCurrentpage((state) => state + 1);
     }
   };
 
