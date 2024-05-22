@@ -3,7 +3,8 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Container from "./Container";
 import Flex from "./Flex";
-import { FaPlus } from "react-icons/fa";
+import { FaRegStar, FaRegStarHalfStroke, FaStar } from "react-icons/fa6";
+import ProductDetailsAccordian from "./ProductDetailsAccordian";
 
 const ProductDetails = () => {
   let [singleData, setSingleData] = useState([]);
@@ -20,34 +21,41 @@ const ProductDetails = () => {
     getData();
   }, []);
 
+  let clientRating = Array.from({ length: 5 }, (_, index) => {
+    let ratingNumber = index + 0.5;
+    return singleData.rating >= index + 1 ? (
+      <FaStar className="text-[#FFD881]" />
+    ) : singleData.rating > ratingNumber ? (
+      <FaRegStarHalfStroke className="text-[#FFD881]" />
+    ) : (
+      <FaRegStar className="text-[#FFD881]" />
+    );
+  });
+
   return (
     <>
       <section>
         <Container>
-          <Flex className="justify-between mt-[64px] mb-[49px]">
-            <div className="w-[32%] h-80 bg-[#B6B6B6]">
-              <img src="" alt="" className="w-full" />
-            </div>
-            <div className="w-[32%] h-80 bg-[#B6B6B6]">
-              <img src="" alt="" className="w-full" />
-            </div>
-            <div className="w-[32%] h-80 bg-[#B6B6B6]">
-              <img src="" alt="" className="w-full" />
-            </div>
+          <Flex className="flex-wrap justify-between mt-[64px] mb-[49px]">
+            {singleData?.images?.map((item) => (
+              <div className="w-[48%] my-5">
+                <img src={item} alt="" className="w-full" />
+              </div>
+            ))}
           </Flex>
           <div className="w-1/2">
             <div className="text-[#262626] font-sans text-[39px] font-bold pb-[15px]">
-              Product
+              {singleData.title}
             </div>
-            <div className="text-[#767676] font-sans text-[14px] font-normal">
-              Review: 5.00
+            <div className="flex items-center text-[#767676] font-sans text-[14px] font-normal">
+              {clientRating} <span className="ml-[12px]">Review</span>
             </div>
-            <Flex className="gap-[25px] items-center py-[21px]">
+            <Flex className="gap-[15px] items-center my-[21px]">
               <div className="text-[#767676] font-sans text-[16px] font-normal">
-                <del>$88.00</del>
+                <del>${singleData.discountPercentage}</del>
               </div>
               <div className="text-[#262626] font-sans text-[20px] font-bold">
-                $44.00
+                ${singleData.price}
               </div>
             </Flex>
             <Flex className="items-center border-t-[1px] border-[#F0F0F0] py-[32px] ">
@@ -85,10 +93,10 @@ const ProductDetails = () => {
             </Flex>
             <Flex className="gap-[27px] border-y-[1px] border-[#F0F0F0] my-[29px] py-[20px]">
               <div className="text-[#262626] font-sans text-[16px] font-bold">
-                STATUS:
+                Stock:
               </div>
               <div className="text-[#767676] font-sans font-normal ">
-                In Stock
+                {singleData.stock}
               </div>
             </Flex>
             <div className="flex gap-[20px] mb-[30px]">
@@ -99,26 +107,7 @@ const ProductDetails = () => {
                 Add to Card
               </button>
             </div>
-            <Flex className="justify-between border-y-[1px] border-[#F0F0F0] py-[21px]">
-              <div className="text-[#262626] font-sans font-bold text-[16px]">
-                FEATURES & DETAILS
-              </div>
-              <div className="">
-                <FaPlus />
-              </div>
-            </Flex>
-            <Flex className="justify-between border-b-[1px] border-[#F0F0F0] mb-[20px] py-[21px]">
-              <div className="text-[#262626] font-sans font-bold text-[16px]">
-                SHIPPING & RETURNS
-              </div>
-              <div className="">
-                <FaPlus />
-              </div>
-            </Flex>
-            <div className="text-[#767676] font-sans font-normal text-[16px]">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </div>
+            <ProductDetailsAccordian />
             <Flex className="mt-[123px] mb-[42px] gap-[62px]">
               <div className="text-[#767676] font-sans font-normal text-[20px]">
                 Description
