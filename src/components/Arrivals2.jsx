@@ -33,7 +33,7 @@ const Arrivals2 = () => {
                 </ul>
               </div>
             </div>
-            <div className="flex justify-between py-3">
+            <div className="flex justify-between items-center py-3">
               <h2 className="text-[#262626] font-sans text-[20px] font-bold">
                 Basic Crew Neck Tree
               </h2>
@@ -59,7 +59,7 @@ const Arrivals2 = () => {
                 </ul>
               </div>
             </div>
-            <div className="flex justify-between py-3">
+            <div className="flex justify-between items-center py-3">
               <h2 className="text-[#262626] font-sans text-[20px] font-bold">
                 Basic Crew Neck Tree
               </h2>
@@ -85,7 +85,7 @@ const Arrivals2 = () => {
                 </ul>
               </div>
             </div>
-            <div className="flex justify-between py-3">
+            <div className="flex justify-between items-center py-3">
               <h2 className="text-[#262626] font-sans text-[20px] font-bold">
                 Basic Crew Neck Tree
               </h2>
@@ -111,7 +111,7 @@ const Arrivals2 = () => {
                 </ul>
               </div>
             </div>
-            <div className="flex justify-between py-3">
+            <div className="flex justify-between items-center py-3">
               <h2 className="text-[#262626] font-sans text-[20px] font-bold">
                 Basic Crew Neck Tree
               </h2>
@@ -145,7 +145,7 @@ const Arrivals2 = () => {
                 </ul>
               </div>
             </div>
-            <div className="flex justify-between py-3">
+            <div className="flex justify-between items-center py-3">
               <h2 className="text-[#262626] font-sans text-[20px] font-bold">
                 Basic Crew Neck Tree
               </h2>
@@ -171,7 +171,7 @@ const Arrivals2 = () => {
                 </ul>
               </div>
             </div>
-            <div className="flex justify-between py-3">
+            <div className="flex justify-between items-center py-3">
               <h2 className="text-[#262626] font-sans text-[20px] font-bold">
                 Basic Crew Neck Tree
               </h2>
@@ -197,7 +197,7 @@ const Arrivals2 = () => {
                 </ul>
               </div>
             </div>
-            <div className="flex justify-between py-3">
+            <div className="flex justify-between items-center py-3">
               <h2 className="text-[#262626] font-sans text-[20px] font-bold">
                 Basic Crew Neck Tree
               </h2>
@@ -223,7 +223,7 @@ const Arrivals2 = () => {
                 </ul>
               </div>
             </div>
-            <div className="flex justify-between py-3">
+            <div className="flex justify-between items-center py-3">
               <h2 className="text-[#262626] font-sans text-[20px] font-bold">
                 Basic Crew Neck Tree
               </h2>
