@@ -1,14 +1,17 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Container from "./Container";
 import Flex from "./Flex";
 import { FaRegStar, FaRegStarHalfStroke, FaStar } from "react-icons/fa6";
 import ProductDetailsAccordian from "./ProductDetailsAccordian";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../components/slice/productSlice";
 
 const ProductDetails = () => {
   let [singleData, setSingleData] = useState([]);
   let productId = useParams();
+  let dispatch = useDispatch();
   let getData = () => {
     axios
       .get(`https://dummyjson.com/products/${productId.id}`)
@@ -16,11 +19,9 @@ const ProductDetails = () => {
         setSingleData(response.data);
       });
   };
-
   useEffect(() => {
     getData();
   }, []);
-
   let clientRating = Array.from({ length: 5 }, (_, index) => {
     let ratingNumber = index + 0.5;
     return singleData.rating >= index + 1 ? (
@@ -31,6 +32,9 @@ const ProductDetails = () => {
       <FaRegStar className="text-[#FFD881]" />
     );
   });
+  let handleAddTocart = (item) => {
+    dispatch(addToCart({ ...item, qun: 1 }));
+  };
 
   return (
     <>
@@ -103,9 +107,11 @@ const ProductDetails = () => {
               <button className="w-[200px] h-[50px] border border-[#262626] font-sans text-[14px] font-bold text-[#262626] bg-[#fff] hover:bg-[#262626] hover:text-[#fff] transition duration-700 ease-in-out">
                 Add to Wish List
               </button>
-              <button className="w-[200px] h-[50px] border border-[#262626] font-sans text-[14px] font-bold text-[#262626] bg-[#fff] hover:bg-[#262626] hover:text-[#fff] transition duration-700 ease-in-out">
-                Add to Card
-              </button>
+              <Link to="/cart" onClick={() => handleAddTocart(singleData)}>
+                <button className="w-[200px] h-[50px] border border-[#262626] font-sans text-[14px] font-bold text-[#262626] bg-[#fff] hover:bg-[#262626] hover:text-[#fff] transition duration-700 ease-in-out">
+                  Add to Cart
+                </button>
+              </Link>
             </div>
             <ProductDetailsAccordian />
             <Flex className="mt-[123px] mb-[42px] gap-[62px]">

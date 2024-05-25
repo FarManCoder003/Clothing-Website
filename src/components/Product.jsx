@@ -7,14 +7,7 @@ import Post from "../components/pagination/Post";
 import PaginationArea from "../components/pagination/PaginationArea";
 import { IoGrid } from "react-icons/io5";
 import { RiListCheck } from "react-icons/ri";
-import {
-  Accordion,
-  AccordionItem,
-  AccordionItemButton,
-  AccordionItemHeading,
-  AccordionItemPanel,
-} from "react-accessible-accordion";
-import { FaPlus } from "react-icons/fa";
+import { FaAngleUp, FaAngleDown } from "react-icons/fa";
 
 const Product = () => {
   let data = useContext(apiData);
@@ -42,7 +35,8 @@ const Product = () => {
       setCurrentpage((state) => state + 1);
     }
   };
-
+  let [show, setShow] = useState(true);
+  let [shows, setShows] = useState(true);
   return (
     <>
       <section className="lg:py-[64px]">
@@ -75,74 +69,66 @@ const Product = () => {
                   Category 5
                 </li>
               </ul>
-              <Accordion
-                allowZeroExpanded
-                preExpanded={["a", "b"]}
-                allowMultipleExpanded
-              >
-                <ul>
-                  <AccordionItem uuid="a">
-                    <AccordionItemHeading>
-                      <AccordionItemButton>
-                        <li className="flex justify-between items-center text-[#262626] font-sans text-[20px] font-bold mb-[26px]">
-                          Shop by Color
-                          <span className="text-[18px] mr-[36px]">
-                            <FaPlus />
-                          </span>
-                        </li>
-                      </AccordionItemButton>
-                    </AccordionItemHeading>
-                    <AccordionItemPanel>
-                      <li className="relative after:absolute after:top-[6px] after:left-[0] after:w-[11px] after:h-[11px] after:bg-[black] after:rounded-[100%]   text-[#767676] font-sans text-[12px] lg:text-[16px] font-normal pl-[20px] my-[20px]">
-                        Color 1
-                      </li>
-                      <li className="relative after:absolute after:top-[6px] after:left-[0] after:w-[11px] after:h-[11px] after:bg-[#FF8686] after:rounded-[100%]   text-[#767676] font-sans text-[12px] lg:text-[16px] font-normal pl-[20px] my-[20px]">
-                        Color 2
-                      </li>
-                      <li className="relative after:absolute after:top-[6px] after:left-[0] after:w-[11px] after:h-[11px] after:bg-[#7ED321] after:rounded-[100%]   text-[#767676] font-sans text-[12px] lg:text-[16px] font-normal pl-[20px] my-[20px]">
-                        Color 3
-                      </li>
-                      <li className="relative after:absolute after:top-[6px] after:left-[0] after:w-[11px] after:h-[11px] after:bg-[#B6B6B6] after:rounded-[100%]   text-[#767676] font-sans text-[12px] lg:text-[16px] font-normal pl-[20px] my-[20px]">
-                        Color 4
-                      </li>
-                      <li className="relative after:absolute after:top-[6px] after:left-[0] after:w-[11px] after:h-[11px] after:bg-[#15CBA5] after:rounded-[100%]   text-[#767676] font-sans text-[12px] lg:text-[16px] font-normal pl-[20px] my-[20px] mb-[74px]">
-                        Color 5
-                      </li>
-                    </AccordionItemPanel>
-                  </AccordionItem>
-                </ul>
-                <ul>
-                  <AccordionItem uuid="b">
-                    <AccordionItemHeading>
-                      <AccordionItemButton>
-                        <li className="flex justify-between items-center text-[#262626] font-sans text-[20px] font-bold mb-[26px]">
-                          Shop by Brand
-                          <span className="text-[18px] mr-[36px]">
-                            <FaPlus />
-                          </span>
-                        </li>
-                      </AccordionItemButton>
-                    </AccordionItemHeading>
-                    <AccordionItemPanel>
-                      <li className="text-[#767676] font-sans text-[12px] lg:text-[16px] font-normal my-[20px]">
-                        Brand 1
-                      </li>
-                      <li className="text-[#767676] font-sans text-[12px] lg:text-[16px] font-normal my-[30px]">
-                        Brand 2
-                      </li>
-                      <li className="text-[#767676] font-sans text-[12px] lg:text-[16px] font-normal my-[30px]">
-                        Brand 3
-                      </li>
-                      <li className="text-[#767676] font-sans text-[12px] lg:text-[16px] font-normal my-[30px]">
-                        Brand 4
-                      </li>
-                      <li className="text-[#767676] font-sans text-[12px] lg:text-[16px] font-normal my-[30px] mb-[74px]">
-                        Brand 5
-                      </li>
-                    </AccordionItemPanel>
-                  </AccordionItem>
-                </ul>
-              </Accordion>
+              <ul>
+                <li
+                  onClick={() => setShow(!show)}
+                  className="flex justify-between items-center text-[#262626] font-sans text-[20px] font-bold mb-[26px] cursor-pointer"
+                >
+                  Shop by Color
+                  <span className="text-[18px] mr-[36px]">
+                    {show == true ? <FaAngleUp /> : <FaAngleDown />}
+                  </span>
+                </li>
+                {show && (
+                  <div className="">
+                    <li className="relative after:absolute after:top-[6px] after:left-[0] after:w-[11px] after:h-[11px] after:bg-[black] after:rounded-[100%]   text-[#767676] font-sans text-[12px] lg:text-[16px] font-normal pl-[20px] my-[20px]">
+                      Color 1
+                    </li>
+                    <li className="relative after:absolute after:top-[6px] after:left-[0] after:w-[11px] after:h-[11px] after:bg-[#FF8686] after:rounded-[100%]   text-[#767676] font-sans text-[12px] lg:text-[16px] font-normal pl-[20px] my-[20px]">
+                      Color 2
+                    </li>
+                    <li className="relative after:absolute after:top-[6px] after:left-[0] after:w-[11px] after:h-[11px] after:bg-[#7ED321] after:rounded-[100%]   text-[#767676] font-sans text-[12px] lg:text-[16px] font-normal pl-[20px] my-[20px]">
+                      Color 3
+                    </li>
+                    <li className="relative after:absolute after:top-[6px] after:left-[0] after:w-[11px] after:h-[11px] after:bg-[#B6B6B6] after:rounded-[100%]   text-[#767676] font-sans text-[12px] lg:text-[16px] font-normal pl-[20px] my-[20px]">
+                      Color 4
+                    </li>
+                    <li className="relative after:absolute after:top-[6px] after:left-[0] after:w-[11px] after:h-[11px] after:bg-[#15CBA5] after:rounded-[100%]   text-[#767676] font-sans text-[12px] lg:text-[16px] font-normal pl-[20px] my-[20px] mb-[74px]">
+                      Color 5
+                    </li>
+                  </div>
+                )}
+              </ul>
+              <ul>
+                <li
+                  onClick={() => setShows(!shows)}
+                  className="flex justify-between items-center text-[#262626] font-sans text-[20px] font-bold mb-[26px] cursor-pointer"
+                >
+                  Shop by Brand
+                  <span className="text-[18px] mr-[36px]">
+                    {shows == true ? <FaAngleUp /> : <FaAngleDown />}
+                  </span>
+                </li>
+                {shows && (
+                  <div className="">
+                    <li className="text-[#767676] font-sans text-[12px] lg:text-[16px] font-normal my-[20px]">
+                      Brand 1
+                    </li>
+                    <li className="text-[#767676] font-sans text-[12px] lg:text-[16px] font-normal my-[30px]">
+                      Brand 2
+                    </li>
+                    <li className="text-[#767676] font-sans text-[12px] lg:text-[16px] font-normal my-[30px]">
+                      Brand 3
+                    </li>
+                    <li className="text-[#767676] font-sans text-[12px] lg:text-[16px] font-normal my-[30px]">
+                      Brand 4
+                    </li>
+                    <li className="text-[#767676] font-sans text-[12px] lg:text-[16px] font-normal my-[30px] mb-[74px]">
+                      Brand 5
+                    </li>
+                  </div>
+                )}
+              </ul>
               <ul className="mb-[74px]">
                 <li className="text-[#262626] font-sans text-[20px] font-bold mb-[26px]">
                   Shop by Price
