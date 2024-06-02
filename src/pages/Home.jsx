@@ -2,13 +2,20 @@ import Ads from "../components/Ads";
 import Arrivals from "../components/Arrivals";
 import Arrivals2 from "../components/Arrivals2";
 import Banner from "../components/Banner";
+import { useEffect } from "react";
+
 const Home = () => {
+  useEffect(() => {
+    window.scrollTo({ top: 0 });
+  });
   return (
     <>
-      <Banner />
-      <Ads />
-      <Arrivals />
-      <Arrivals2 />
+      <div className="pt-[130px]">
+        <Banner />
+        <Ads />
+        <Arrivals />
+        <Arrivals2 />
+      </div>
     </>
   );
 };

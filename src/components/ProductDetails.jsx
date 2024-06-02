@@ -9,6 +9,9 @@ import { useDispatch } from "react-redux";
 import { addToCart } from "../components/slice/productSlice";
 
 const ProductDetails = () => {
+  useEffect(() => {
+    window.scrollTo({ top: 0 });
+  });
   let [singleData, setSingleData] = useState([]);
   let productId = useParams();
   let dispatch = useDispatch();
@@ -38,9 +41,9 @@ const ProductDetails = () => {
 
   return (
     <>
-      <section>
+      <section className="pt-[100px]">
         <Container>
-          <Flex className="flex-wrap justify-between mt-[64px] mb-[49px]">
+          <Flex className="flex-wrap justify-between mb-[49px]">
             {singleData?.images?.map((item) => (
               <div className="w-[48%] my-5">
                 <img src={item} alt="" className="w-full" />
