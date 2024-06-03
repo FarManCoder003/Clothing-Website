@@ -112,10 +112,10 @@ const AddtoCart = () => {
               <option value="L">L</option>
               <option value="XL">XL</option>
             </select>
-            <div className="text-[#262626] font-sans font-bold ml-[5px] lg:ml-[23px] text-[8px] lg:text-[14px]">
+            <div className="text-[#262626] font-sans font-bold ml-[5px] lg:ml-[23px] text-[14px]">
               Apply coupon
             </div>
-            <div className="text-[#262626] ml-auto font-sans font-bold text-[8px] lg:text-[14px]">
+            <div className="text-[#262626] ml-auto font-sans font-bold text-[14px]">
               Update cart
             </div>
           </Flex>
