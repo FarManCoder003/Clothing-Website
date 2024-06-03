@@ -11,7 +11,7 @@ function SampleNextArrow(props) {
   return (
     <div
       onClick={onClick}
-      className="h-[40px] w-[40px] text-[45px]  absolute top-[40%] right-0 lg:right-[-15px] z-40 translate-y-[-50%]"
+      className="text-[30px] lg:text-[45px] absolute top-[30%] lg:top-[40%] right-0 lg:right-[-15px] z-40 translate-y-[-50%]"
     >
       <FaCircleArrowRight className="inline-block text-[#979797] bg-[white] rounded-[100%]" />
     </div>
@@ -23,7 +23,7 @@ function SamplePrevArrow(props) {
   return (
     <div
       onClick={onClick}
-      className="h-[40px] w-[40px] text-[45px]  absolute top-[40%] left-0 lg:left-[-15px] z-40 translate-y-[-50%]"
+      className="text-[30px] lg:text-[45px] absolute top-[30%] lg:top-[40%] left-0 lg:left-[-15px] z-40 translate-y-[-50%]"
     >
       <FaCircleArrowLeft className="inline-block text-[#979797] bg-[white] rounded-[100%]" />
     </div>
@@ -43,7 +43,7 @@ const Arrivals = () => {
       {
         breakpoint: 640,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 2,
           slidesToScroll: 1,
         },
       },
@@ -52,7 +52,7 @@ const Arrivals = () => {
   return (
     <section>
       <Container>
-        <h2 className="font-sans font-bold text-lg lg:text-[39px] text-[#262626]">
+        <h2 className="font-sans font-bold text-xl lg:text-[39px] text-[#262626]">
           New Arrivals
         </h2>
         <Slider className="w-full lg:h-[400px] lg:my-5" {...settings}>

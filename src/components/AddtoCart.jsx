@@ -29,32 +29,32 @@ const AddtoCart = () => {
   };
   return (
     <>
-      <section className="py-[64px]">
+      <section className="py-[48px] lg:py-[64px]">
         <Container>
-          <div className="text-[#262626] font-sans font-bold text-[49px]">
+          <div className="text-[#262626] font-sans font-bold text-[36px] lg:text-[49px]">
             Cart
           </div>
           <div className="text-[#767676] font-sans font-normal text-[12px]">
             <Link to="/">Home</Link> &gt; <Link to="/cart">Cart</Link>
           </div>
-          <Flex className="mt-[64px] py-[32px] px-[20px] bg-[#F5F5F3]">
-            <div className="w-6/12 text-[#262626] font-sans font-bold text-[16px]">
+          <Flex className="mt-[64px] py-[16px] lg:py-[32px] px-[20px] bg-[#F5F5F3]">
+            <div className="w-1/3 lg:w-6/12 text-[#262626] font-sans font-bold text-[16px]">
               Product
             </div>
-            <div className="w-2/12 text-[#262626] font-sans font-bold text-[16px]">
+            <div className="hidden lg:block lg:w-2/12 text-[#262626] font-sans font-bold text-[16px]">
               Price
             </div>
-            <div className="w-3/12 text-[#262626] font-sans font-bold text-[16px]">
+            <div className="w-1/3 lg:w-3/12 text-[#262626] font-sans font-bold text-[16px]">
               Quantity
             </div>
-            <div className="w-1/12 text-[#262626] font-sans font-bold text-[16px]">
+            <div className="w-1/3 lg:w-1/12 text-[#262626] font-sans font-bold text-[16px]">
               Total
             </div>
           </Flex>
           {data.map((item, index) => (
-            <Flex className="items-center px-[20px] py-[30px] border-x-[1px] border-x-[#F0F0F0]">
-              <div className="w-6/12 flex items-center">
-                <div className="">
+            <Flex className="items-center px-4 lg:px-[20px] py-[30px] border-x-[1px] border-x-[#F0F0F0]">
+              <div className="w-1/3 lg:w-6/12 flex items-center">
+                <div className="mr-[15px] lg:mr-[40px] ">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="10"
@@ -68,20 +68,20 @@ const AddtoCart = () => {
                     />
                   </svg>
                 </div>
-                <div className="w-[100px] h-[100px] ml-[40px] mr-[20px]">
+                <div className="w-[100px] lg:h-[100px] lg:mr-[20px]">
                   <img src={item.thumbnail} alt="" className="w-full" />
                 </div>
-                <div className="text-[#262626] font-sans font-bold text-[16px]">
+                <div className="hidden lg:block text-[#262626] font-sans font-bold text-[10px] lg:text-[16px]">
                   {item.title}
                 </div>
               </div>
-              <div className="w-2/12">
+              <div className="hidden lg:block lg:w-2/12">
                 <div className="text-[#262626] font-sans font-bold text-[16px]">
                   ${item.price}
                 </div>
               </div>
-              <div className="w-3/12">
-                <div className="flex justify-between w-[139px] border border-[#F0F0F0] px-[21px] py-[3px] text-[#767676] font-sans font-normal text-[16px]">
+              <div className="w-1/3 lg:w-3/12">
+                <div className="flex justify-between w-[65px] lg:w-[139px] border border-[#F0F0F0] px-2 lg:px-[21px] lg:py-[3px] text-[#767676] font-sans font-normal text-[8px] lg:text-[16px]">
                   <div
                     onClick={() => handleDecrement(index)}
                     className="cursor-pointer"
@@ -97,32 +97,32 @@ const AddtoCart = () => {
                   </div>
                 </div>
               </div>
-              <div className="w-1/12">
-                <div className="text-[#262626] font-sans font-bold text-[16px]">
+              <div className="w-1/3 lg:w-1/12">
+                <div className="text-[#262626] font-sans font-bold text-[8px] lg:text-[16px]">
                   ${(item.price * item.qun).toFixed(2)}
                 </div>
               </div>
             </Flex>
           ))}
-          <Flex className="items-center border-[1px] border-[#F0F0F0] p-[20px]">
-            <select className="w-[255px] bg-[transparent] border border-[#EAEAEA] text-[#767676] text-[16px] font-sans font-normal py-[10px] pl-[21px]">
+          <Flex className="items-center border-[1px] border-[#F0F0F0] p-[10px] lg:p-[20px]">
+            <select className="w-[100px] lg:w-[255px] bg-[transparent] border border-[#EAEAEA] text-[#767676] text-[10px] lg:text-[16px] font-sans font-normal py-[10px] lg:pl-[21px]">
               <option value="Size">Size</option>
               <option value="S">S</option>
               <option value="M">M</option>
               <option value="L">L</option>
               <option value="XL">XL</option>
             </select>
-            <div className="text-[#262626] font-sans font-bold ml-[23px] text-[14px]">
+            <div className="text-[#262626] font-sans font-bold ml-[5px] lg:ml-[23px] text-[8px] lg:text-[14px]">
               Apply coupon
             </div>
-            <div className="text-[#262626] ml-auto font-sans font-bold text-[14px]">
+            <div className="text-[#262626] ml-auto font-sans font-bold text-[8px] lg:text-[14px]">
               Update cart
             </div>
           </Flex>
-          <div className="text-end mt-[54px] mb-[24px] text-[#262626] text-[20px] font-sans font-bold">
+          <div className="lg:text-end mt-[54px] mb-[24px] text-[#262626] text-[20px] font-sans font-bold">
             Cart totals
           </div>
-          <Flex className="w-5/12 ml-auto border border-[#F0F0F0]">
+          <Flex className="lg:w-5/12 ml-auto border border-[#F0F0F0]">
             <div className="w-1/2 text-[#262626] text-[16px] font-sans font-bold border-r border-r-[#F0F0F0]">
               <div className="pl-[20px] pt-[17px] pb-[14px] border-b border-b-[#F0F0F0]">
                 Subtotal

@@ -8,11 +8,12 @@ import PaginationArea from "../components/pagination/PaginationArea";
 import { IoGrid } from "react-icons/io5";
 import { RiListCheck } from "react-icons/ri";
 import { FaAngleUp, FaAngleDown } from "react-icons/fa";
+// import { GrSort } from "react-icons/gr";
 
 const Product = () => {
   let data = useContext(apiData);
   let [currentPage, setCurrentpage] = useState(1);
-  let [perPage, setPerPage] = useState(9);
+  let [perPage, setPerPage] = useState(12);
   let lastPage = currentPage * perPage;
   let firstPage = lastPage - perPage;
   let allData = data.slice(firstPage, lastPage);
@@ -37,6 +38,7 @@ const Product = () => {
   };
   let [show, setShow] = useState(true);
   let [shows, setShows] = useState(true);
+  // let [sort, setSort] = useState(false);
   return (
     <>
       <section className="lg:py-[64px]">
@@ -47,8 +49,16 @@ const Product = () => {
           <div className="text-[#767676] font-sans font-normal text-[12px]">
             <Link to="/">Home</Link> &gt; <Link to="/shop">Products</Link>
           </div>
-          <Flex className="my-[124px]">
-            <div className="w-3/12">
+          <Flex className="my-[48px] lg:my-[124px]">
+            <div className="hidden lg:block lg:w-3/12 relative">
+              {/* <div
+                className="cursor-pointer absolute top-2 left-0"
+                onClick={() => setSort(!sort)}
+              >
+                <GrSort />
+              </div>
+              {sort && ()}
+              */}
               <ul className="mb-[74px]">
                 <li className="text-[#262626] font-sans text-[20px] font-bold mb-[26px]">
                   Shop by Category
@@ -150,18 +160,18 @@ const Product = () => {
                 </li>
               </ul>
             </div>
-            <div className="w-9/12">
-              <Flex className="justify-between items-center mb-[60]">
-                <div className="flex gap-[20px]">
-                  <div className="w-[36px] h-[36px] flex justify-center items-center border border-[#F0F0F0] text-[#767676] hover:bg-[#262626] hover:text-white transition duration-500 ease-in-out">
+            <div className="lg:w-9/12">
+              <div className="lg:flex justify-between items-center mb-[60]">
+                <div className="flex justify-end gap-[20px]">
+                  <div className="w-[36px] h-[36px] flex justify-center items-center border border-[#F0F0F0] text-[#767676] hover:bg-[#262626] hover:text-white transition duration-500 ease-in-out cursor-pointer">
                     <IoGrid className="w-[20px] h-[20px]" />
                   </div>
-                  <div className="w-[36px] h-[36px] flex justify-center items-center border border-[#F0F0F0] text-[#767676] hover:bg-[#262626] hover:text-white transition duration-500 ease-in-out">
+                  <div className="w-[36px] h-[36px] flex justify-center items-center border border-[#F0F0F0] text-[#767676] hover:bg-[#262626] hover:text-white transition duration-500 ease-in-out cursor-pointer">
                     <RiListCheck className="w-[20px] h-[20px]" />
                   </div>
                 </div>
-                <div className="flex items-center text-[#767676] font-sans text-[16px] font-normal">
-                  <div className="">Sort by:</div>
+                <div className="flex items-center mt-[12px] lg:mt-0 text-[#767676] font-sans text-xs lg:text-[16px] font-normal">
+                  <div className="">Sort by: </div>
                   <div className="ml-[12px]">
                     <select className="lg:w-[239px] h-[36px] px-[10px] py-[3px] border-[1px] border-solid border-[#F0F0F0] bg-transparent">
                       <option>Featured</option>
@@ -182,7 +192,7 @@ const Product = () => {
                     </select>
                   </div>
                 </div>
-              </Flex>
+              </div>
               <div className="flex justify-between flex-wrap mt-[60px]">
                 <Post allData={allData} />
               </div>

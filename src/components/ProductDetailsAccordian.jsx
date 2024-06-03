@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Accordion,
   AccordionItem,
@@ -7,9 +6,24 @@ import {
   AccordionItemPanel,
 } from "react-accessible-accordion";
 import { FaPlus } from "react-icons/fa";
-import Flex from "./Flex";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import Flex from "../components/Flex";
 
 const ProductDetailsAccordian = () => {
+  let [singleData, setSingleData] = useState([]);
+  let productId = useParams();
+  let getData = () => {
+    axios
+      .get(`https://dummyjson.com/products/${productId.id}`)
+      .then((response) => {
+        setSingleData(response.data);
+      });
+  };
+  useEffect(() => {
+    getData();
+  }, []);
   return (
     <>
       <Accordion allowZeroExpanded preExpanded={["a"]}>
@@ -28,8 +42,7 @@ const ProductDetailsAccordian = () => {
           </AccordionItemHeading>
           <AccordionItemPanel>
             <div className="text-[#767676] font-sans font-normal text-[16px]">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              {singleData.description}
             </div>
           </AccordionItemPanel>
         </AccordionItem>
@@ -48,8 +61,9 @@ const ProductDetailsAccordian = () => {
           </AccordionItemHeading>
           <AccordionItemPanel>
             <div className="text-[#767676] font-sans font-normal text-[16px]">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              {singleData.shippingInformation} <br />
+              {singleData.warrantyInformation} <br />
+              {singleData.returnPolicy}
             </div>
           </AccordionItemPanel>
         </AccordionItem>

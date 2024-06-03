@@ -7,7 +7,7 @@ const Shop = () => {
   });
   return (
     <>
-      <div className="pt-[130px]">
+      <div className="pt-[48px] lg:pt-[130px]">
         <Product />
       </div>
     </>

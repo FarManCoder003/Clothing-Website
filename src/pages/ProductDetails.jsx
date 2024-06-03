@@ -1,10 +1,10 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import Container from "./Container";
-import Flex from "./Flex";
+import Container from "../components/Container";
+import Flex from "../components/Flex";
 import { FaRegStar, FaRegStarHalfStroke, FaStar } from "react-icons/fa6";
-import ProductDetailsAccordian from "./ProductDetailsAccordian";
+import ProductDetailsAccordian from "../components/ProductDetailsAccordian";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../components/slice/productSlice";
 
@@ -41,27 +41,27 @@ const ProductDetails = () => {
 
   return (
     <>
-      <section className="pt-[100px]">
+      <section className="lg:pt-[100px]">
         <Container>
           <Flex className="flex-wrap justify-between mb-[49px]">
             {singleData?.images?.map((item) => (
-              <div className="w-[48%] my-5">
+              <div className="w-[32%] lg:my-5 h-full">
                 <img src={item} alt="" className="w-full" />
               </div>
             ))}
           </Flex>
-          <div className="w-1/2">
-            <div className="text-[#262626] font-sans text-[39px] font-bold pb-[15px]">
+          <div className="lg:w-1/2">
+            <div className="text-[#262626] font-sans text-xl lg:text-[39px] font-bold pb-[15px]">
               {singleData.title}
             </div>
             <div className="flex items-center text-[#767676] font-sans text-[14px] font-normal">
               {clientRating} <span className="ml-[12px]">Review</span>
             </div>
-            <Flex className="gap-[15px] items-center my-[21px]">
-              <div className="text-[#767676] font-sans text-[16px] font-normal">
+            <Flex className="gap-x-[10px] lg:gap-x-[15px] items-center my-[21px]">
+              <div className="text-[#767676] font-sans text-[14px] lg:text-[16px] font-normal">
                 <del>${singleData.discountPercentage}</del>
               </div>
-              <div className="text-[#262626] font-sans text-[20px] font-bold">
+              <div className="text-[#262626] font-sans text-[18px] lg:text-[20px] font-bold">
                 ${singleData.price}
               </div>
             </Flex>
@@ -107,17 +107,20 @@ const ProductDetails = () => {
               </div>
             </Flex>
             <div className="flex gap-[20px] mb-[30px]">
-              <button className="w-[200px] h-[50px] border border-[#262626] font-sans text-[14px] font-bold text-[#262626] bg-[#fff] hover:bg-[#262626] hover:text-[#fff] transition duration-700 ease-in-out">
+              <button className="w-1/2 lg:w-[200px] h-[50px] border border-[#262626] font-sans text-[14px] font-bold text-[#262626] bg-[#fff] hover:bg-[#262626] hover:text-[#fff] transition duration-700 ease-in-out">
                 Add to Wish List
               </button>
+              <div className="w-1/2">
               <Link to="/cart" onClick={() => handleAddTocart(singleData)}>
-                <button className="w-[200px] h-[50px] border border-[#262626] font-sans text-[14px] font-bold text-[#262626] bg-[#fff] hover:bg-[#262626] hover:text-[#fff] transition duration-700 ease-in-out">
+                <button className="w-full lg:w-[200px] h-[50px] border border-[#262626] font-sans text-[14px] font-bold text-[#262626] bg-[#fff] hover:bg-[#262626] hover:text-[#fff] transition duration-700 ease-in-out">
                   Add to Cart
                 </button>
               </Link>
+              </div>
+              
             </div>
             <ProductDetailsAccordian />
-            <Flex className="mt-[123px] mb-[42px] gap-[62px]">
+            <Flex className="mt-[48px] lg:mt-[123px] mb-[42px] gap-[62px]">
               <div className="text-[#767676] font-sans font-normal text-[20px]">
                 Description
               </div>
@@ -189,7 +192,7 @@ const ProductDetails = () => {
               electronic typesetting, remaining essentially unchanged.
             </div>
           </div>
-          <div className="w-1/2">
+          <div className="lg:w-1/2">
             <div className="text-[#262626] font-sans font-bold text-[20px]  my-[48px]">
               Add a Review
             </div>

@@ -8,10 +8,10 @@ const Error = () => {
   });
   return (
     <>
-      <div className="pt-[130px]">
+      <div className="lg:pt-[130px]">
         <Container>
-          <div className="w-1/2 mb-[64px]">
-            <div className="text-[#262626] text-[200px] font-sans font-bold">
+          <div className="lg:w-1/2 mb-[64px]">
+            <div className="text-[#262626] text-[100px] lg:text-[200px] font-sans font-bold">
               404
             </div>
             <div className="text-[#767676] text-[16px] font-sans font-normal">

@@ -2,9 +2,9 @@ const PaginationArea = ({ pageNumber, paginate, currentPage, next, prev }) => {
   return (
     <>
       <nav className="py-3">
-        <ul className="flex gap-[15px]">
+        <ul className="flex flex-wrap gap-[15px]">
           <li onClick={prev}>
-            <a className="flex items-center justify-center text-[#767676] font-sans text-[14px] font-normal px-[14px] py-[9px] border border-[#F0F0F0] hover:bg-[#262626] hover:text-[#fff] transition duration-200 ease-in-out cursor-pointer">
+            <a className="flex items-center justify-center text-[#767676] font-sans text-xs lg:text-[14px] font-normal px-[8px] lg:px-[14px] py-[3px] lg:py-[9px] border border-[#F0F0F0] hover:bg-[#262626] hover:text-[#fff] transition duration-200 ease-in-out cursor-pointer">
               Previous
             </a>
           </li>
@@ -13,15 +13,15 @@ const PaginationArea = ({ pageNumber, paginate, currentPage, next, prev }) => {
               onClick={() => paginate(item)}
               className={
                 currentPage == i + 1
-                  ? "flex items-center justify-center font-sans text-[14px] font-normal px-[14px] py-[9px] border border-[#F0F0F0] bg-[#262626] text-[#fff] transition duration-200 ease-in-out cursor-pointer"
-                  : "flex items-center justify-center text-[#767676] font-sans text-[14px] font-normal px-[14px] py-[9px] border border-[#F0F0F0] hover:bg-[#262626] hover:text-[#fff] transition duration-200 ease-in-out cursor-pointer"
+                  ? "flex items-center justify-center font-sans text-xs lg:text-[14px] font-normal px-[8px] lg:px-[14px] py-[3px] lg:py-[9px] border border-[#F0F0F0] bg-[#262626] text-[#fff] transition duration-200 ease-in-out cursor-pointer"
+                  : "flex items-center justify-center text-[#767676] font-sans text-xs lg:text-[14px] font-normal px-[8px] lg:px-[14px] py-[3px] lg:py-[9px] border border-[#F0F0F0] hover:bg-[#262626] hover:text-[#fff] transition duration-200 ease-in-out cursor-pointer"
               }
             >
               {item + 1}
             </li>
           ))}
           <li onClick={next}>
-            <a className="flex items-center justify-center text-[#767676] font-sans text-[14px] font-normal px-[14px] py-[9px] border border-[#F0F0F0] hover:bg-[#262626] hover:text-[#fff] transition duration-200 ease-in-out cursor-pointer">
+            <a className="flex items-center justify-center text-[#767676] font-sans text-xs lg:text-[14px] font-normal px-[8px] lg:px-[14px] py-[3px] lg:py-[9px] border border-[#F0F0F0] hover:bg-[#262626] hover:text-[#fff] transition duration-200 ease-in-out cursor-pointer">
               Next
             </a>
           </li>
