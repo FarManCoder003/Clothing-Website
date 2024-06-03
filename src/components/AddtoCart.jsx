@@ -44,10 +44,10 @@ const AddtoCart = () => {
             <div className="hidden lg:block lg:w-2/12 text-[#262626] font-sans font-bold text-[16px]">
               Price
             </div>
-            <div className="w-1/3 lg:w-3/12 text-[#262626] font-sans font-bold text-[16px]">
+            <div className="w-1/3 lg:w-3/12 text-[#262626] text-center lg:text-start font-sans font-bold text-[16px]">
               Quantity
             </div>
-            <div className="w-1/3 lg:w-1/12 text-[#262626] font-sans font-bold text-[16px]">
+            <div className="w-1/3 lg:w-1/12 text-[#262626] text-center lg:text-start font-sans font-bold text-[16px]">
               Total
             </div>
           </Flex>
@@ -81,7 +81,7 @@ const AddtoCart = () => {
                 </div>
               </div>
               <div className="w-1/3 lg:w-3/12">
-                <div className="flex justify-between w-[65px] lg:w-[139px] border border-[#F0F0F0] px-2 lg:px-[21px] py-[3px] text-[#767676] font-sans font-normal text-[16px]">
+                <div className="flex justify-between w-[65px] lg:w-[139px] border border-[#F0F0F0] mx-auto lg:mx-0 px-2 lg:px-[21px] py-[3px] text-[#767676] font-sans font-normal text-[16px]">
                   <div
                     onClick={() => handleDecrement(index)}
                     className="cursor-pointer"
@@ -98,7 +98,7 @@ const AddtoCart = () => {
                 </div>
               </div>
               <div className="w-1/3 lg:w-1/12">
-                <div className="text-[#262626] font-sans font-bold text-[16px]">
+                <div className="text-[#262626] text-center lg:text-start font-sans font-bold text-[16px]">
                   ${(item.price * item.qun).toFixed(2)}
                 </div>
               </div>
