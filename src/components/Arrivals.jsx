@@ -52,10 +52,10 @@ const Arrivals = () => {
   return (
     <section>
       <Container>
-        <div className="font-sans font-bold text-[39px] text-[#262626]">
+        <h2 className="font-sans font-bold text-lg lg:text-[39px] text-[#262626]">
           New Arrivals
-        </div>
-        <Slider className="w-full h-[200px] lg:h-[400px] my-5" {...settings}>
+        </h2>
+        <Slider className="w-full lg:h-[400px] lg:my-5" {...settings}>
           {data.map((item) => (
             <Link to="/shop">
               <ArrivalsItem item={item} />

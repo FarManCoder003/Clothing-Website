@@ -36,7 +36,7 @@ const Navbar = () => {
   }, [cartShow, usercartShow, userShow]);
 
   return (
-    <nav className="fixed z-[999] w-[100%] bg-[#F5F5F3] py-4 lg:pt-[65px]">
+    <nav className="lg:fixed z-[999] w-[100%] bg-[#F5F5F3] py-4 pt-[55px] lg:pt-[64px]">
       <Container>
         <Flex className="items-center">
           <div className="w-[30%] relative">
@@ -49,22 +49,22 @@ const Navbar = () => {
             {cartShow && (
               <div className="absolute z-50 top-[30px] left-0 bg-[#262626] w-[170px]">
                 <ul className="py-4">
-                  <li className="text-[rgba(255,255,255,0.7)] font-sans text-[16px] py-2 duration-300 ease-in-out pl-3 hover:pl-6 hover:text-white ">
+                  <li className="text-[rgba(255,255,255,0.7)] font-sans text-sm lg:text-[16px] py-2 duration-300 ease-in-out pl-3 hover:pl-6 hover:text-white ">
                     Accesories
                   </li>
-                  <li className="text-[rgba(255,255,255,0.7)] font-sans text-[16px] py-2 duration-300 ease-in-out pl-3 hover:pl-6 hover:text-white">
+                  <li className="text-[rgba(255,255,255,0.7)] font-sans text-sm lg:text-[16px] py-2 duration-300 ease-in-out pl-3 hover:pl-6 hover:text-white">
                     Furniture
                   </li>
-                  <li className="text-[rgba(255,255,255,0.7)] font-sans text-[16px] py-2 duration-300 ease-in-out pl-3 hover:pl-6 hover:text-white">
+                  <li className="text-[rgba(255,255,255,0.7)] font-sans text-sm lg:text-[16px] py-2 duration-300 ease-in-out pl-3 hover:pl-6 hover:text-white">
                     Electronics
                   </li>
-                  <li className="text-[rgba(255,255,255,0.7)] font-sans text-[16px] py-2 duration-300 ease-in-out pl-3 hover:pl-6 hover:text-white">
+                  <li className="text-[rgba(255,255,255,0.7)] font-sans text-sm lg:text-[16px] py-2 duration-300 ease-in-out pl-3 hover:pl-6 hover:text-white">
                     Clothes
                   </li>
-                  <li className="text-[rgba(255,255,255,0.7)] font-sans text-[16px] py-2 duration-300 ease-in-out pl-3 hover:pl-6 hover:text-white">
+                  <li className="text-[rgba(255,255,255,0.7)] font-sans text-sm lg:text-[16px] py-2 duration-300 ease-in-out pl-3 hover:pl-6 hover:text-white">
                     Bags
                   </li>
-                  <li className="text-[rgba(255,255,255,0.7)] font-sans text-[16px] py-2 duration-300 ease-in-out pl-3 hover:pl-6 hover:text-white">
+                  <li className="text-[rgba(255,255,255,0.7)] font-sans text-sm lg:text-[16px] py-2 duration-300 ease-in-out pl-3 hover:pl-6 hover:text-white">
                     Home appliances
                   </li>
                 </ul>
@@ -74,11 +74,11 @@ const Navbar = () => {
           <div className="w-[40%]">
             <div className="relative">
               <input
-                placeholder="Search Products"
+                placeholder="Search"
                 type="search"
                 className="w-full h-6 lg:h-[50px] font-sans font-normal text-[#C4C4C4] text-[14px]  outline-none px-2"
               />
-              <div className="absolute top-[50%] lg:right-4 right-2 translate-y-[-50%]">
+              <div className="absolute text-sm lg:text-[14px] top-[50%] lg:right-4 right-2 translate-y-[-50%]">
                 <FaSearch />
               </div>
             </div>
@@ -95,7 +95,7 @@ const Navbar = () => {
             </div>
             {userShow && (
               <div className="absolute z-50 top-[30px] right-0 w-[130px] bg-[#262626] py-1 px-3">
-                <ul className="font-sans text-[16px] font-normal text-[#FFFFFFB2]">
+                <ul className="font-sans text-sm lg:text-[16px] font-normal text-[#FFFFFFB2]">
                   <li className="py-[16px] duration-300 ease-in-out hover:text-[#fff] hover:pl-[10px]">
                     My Account
                   </li>

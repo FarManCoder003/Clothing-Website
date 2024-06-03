@@ -10,7 +10,7 @@ const Home = () => {
   });
   return (
     <>
-      <div className="pt-[130px]">
+      <div className="lg:pt-[130px]">
         <Banner />
         <Ads />
         <Arrivals />

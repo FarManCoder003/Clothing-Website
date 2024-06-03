@@ -4,14 +4,14 @@ import { TfiReload } from "react-icons/tfi";
 const ArrivalsItem = ({ item }) => {
   return (
     <>
-      <div className="px-1 py-5">
+      <div className="px-1 lg:py-5">
         <div className="relative group overflow-hidden">
           <img
             src={item.thumbnail}
             className="lg:w-[350px] lg:h-[350px]"
             alt=""
           />
-          <div className="bg-white absolute left-0 h-[130px] duration-300 ease-in-out bottom-[-120px] w-full group-hover:bottom-[0px] flex items-center justify-end">
+          <div className="bg-white absolute left-0 h-[38%] duration-300 ease-in-out bottom-[-120px] w-full group-hover:bottom-[0px] flex items-center justify-end">
             <ul className="pr-5">
               <li className="flex items-center justify-end gap-x-4 text-[#767676] font-sans text-[16px] font-normal">
                 Add to Wish List <FaHeart className="text-[#262626]" />
@@ -26,7 +26,7 @@ const ArrivalsItem = ({ item }) => {
           </div>
         </div>
         <div className="flex justify-between items-center py-3">
-          <h2 className="text-[#262626] font-sans text-[20px] font-bold">
+          <h2 className="text-[#262626] font-sans text-lg font-bold">
             {item.title}
           </h2>
           <p className="text-[#767676] font-sans text-[16px] font-normal">
