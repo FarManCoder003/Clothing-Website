@@ -8,7 +8,6 @@ import PaginationArea from "../components/pagination/PaginationArea";
 import { IoGrid } from "react-icons/io5";
 import { RiListCheck } from "react-icons/ri";
 import { FaAngleUp, FaAngleDown } from "react-icons/fa";
-// import { GrSort } from "react-icons/gr";
 
 const Product = () => {
   let data = useContext(apiData);
@@ -38,7 +37,6 @@ const Product = () => {
   };
   let [show, setShow] = useState(true);
   let [shows, setShows] = useState(true);
-  // let [sort, setSort] = useState(false);
   return (
     <>
       <section className="lg:py-[64px]">
@@ -51,14 +49,6 @@ const Product = () => {
           </div>
           <Flex className="my-[48px] lg:my-[124px]">
             <div className="hidden lg:block lg:w-3/12 relative">
-              {/* <div
-                className="cursor-pointer absolute top-2 left-0"
-                onClick={() => setSort(!sort)}
-              >
-                <GrSort />
-              </div>
-              {sort && ()}
-              */}
               <ul className="mb-[74px]">
                 <li className="text-[#262626] font-sans text-[20px] font-bold mb-[26px]">
                   Shop by Category

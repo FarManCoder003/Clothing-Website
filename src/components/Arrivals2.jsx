@@ -20,17 +20,17 @@ const Arrivals2 = () => {
             <div className="relative group overflow-hidden">
               <img src={Product1} className="" alt="" />
               <div className="bg-white absolute left-0 h-[50%] lg:h-[130px] duration-300 ease-in-out bottom-[-120px] w-full group-hover:bottom-[0px] flex items-center justify-end">
-              <ul className="">
-              <li className="flex items-center justify-end gap-x-2 lg:gap-x-4 text-[#767676] font-sans text-[10px] lg:text-[16px] font-normal">
-                Add to Wish List <FaHeart className="text-[#262626]" />
-              </li>
-              <li className="flex items-center justify-end gap-x-2 lg:gap-x-4 lg:py-2 text-[#767676] font-sans text-[10px] lg:text-[16px] font-normal">
-                Compare <TfiReload className="text-[#262626]" />
-              </li>
-              <li className="flex items-center justify-end gap-x-2 lg:gap-x-4 text-[#262626] font-sans text-[10px] lg:text-[16px] font-bold">
-                Add to Cart <FaShoppingCart />
-              </li>
-            </ul>
+                <ul className="">
+                  <li className="flex items-center justify-end gap-x-2 lg:gap-x-4 text-[#767676] font-sans text-[10px] lg:text-[16px] font-normal">
+                    Add to Wish List <FaHeart className="text-[#262626]" />
+                  </li>
+                  <li className="flex items-center justify-end gap-x-2 lg:gap-x-4 lg:py-2 text-[#767676] font-sans text-[10px] lg:text-[16px] font-normal">
+                    Compare <TfiReload className="text-[#262626]" />
+                  </li>
+                  <li className="flex items-center justify-end gap-x-2 lg:gap-x-4 text-[#262626] font-sans text-[10px] lg:text-[16px] font-bold">
+                    Add to Cart <FaShoppingCart />
+                  </li>
+                </ul>
               </div>
             </div>
             <div className="flex justify-between items-center py-3">
@@ -46,17 +46,17 @@ const Arrivals2 = () => {
             <div className="relative group overflow-hidden">
               <img src={Product2} className="" alt="" />
               <div className="bg-white absolute left-0 h-[50%] lg:h-[130px] duration-300 ease-in-out bottom-[-120px] w-full group-hover:bottom-[0px] flex items-center justify-end">
-              <ul className="">
-              <li className="flex items-center justify-end gap-x-2 lg:gap-x-4 text-[#767676] font-sans text-[10px] lg:text-[16px] font-normal">
-                Add to Wish List <FaHeart className="text-[#262626]" />
-              </li>
-              <li className="flex items-center justify-end gap-x-2 lg:gap-x-4 lg:py-2 text-[#767676] font-sans text-[10px] lg:text-[16px] font-normal">
-                Compare <TfiReload className="text-[#262626]" />
-              </li>
-              <li className="flex items-center justify-end gap-x-2 lg:gap-x-4 text-[#262626] font-sans text-[10px] lg:text-[16px] font-bold">
-                Add to Cart <FaShoppingCart />
-              </li>
-            </ul>
+                <ul className="">
+                  <li className="flex items-center justify-end gap-x-2 lg:gap-x-4 text-[#767676] font-sans text-[10px] lg:text-[16px] font-normal">
+                    Add to Wish List <FaHeart className="text-[#262626]" />
+                  </li>
+                  <li className="flex items-center justify-end gap-x-2 lg:gap-x-4 lg:py-2 text-[#767676] font-sans text-[10px] lg:text-[16px] font-normal">
+                    Compare <TfiReload className="text-[#262626]" />
+                  </li>
+                  <li className="flex items-center justify-end gap-x-2 lg:gap-x-4 text-[#262626] font-sans text-[10px] lg:text-[16px] font-bold">
+                    Add to Cart <FaShoppingCart />
+                  </li>
+                </ul>
               </div>
             </div>
             <div className="flex justify-between items-center py-3">
@@ -72,17 +72,17 @@ const Arrivals2 = () => {
             <div className="relative group overflow-hidden">
               <img src={Product3} className="" alt="" />
               <div className="bg-white absolute left-0 h-[50%] lg:h-[130px] duration-300 ease-in-out bottom-[-120px] w-full group-hover:bottom-[0px] flex items-center justify-end">
-              <ul className="">
-              <li className="flex items-center justify-end gap-x-2 lg:gap-x-4 text-[#767676] font-sans text-[10px] lg:text-[16px] font-normal">
-                Add to Wish List <FaHeart className="text-[#262626]" />
-              </li>
-              <li className="flex items-center justify-end gap-x-2 lg:gap-x-4 lg:py-2 text-[#767676] font-sans text-[10px] lg:text-[16px] font-normal">
-                Compare <TfiReload className="text-[#262626]" />
-              </li>
-              <li className="flex items-center justify-end gap-x-2 lg:gap-x-4 text-[#262626] font-sans text-[10px] lg:text-[16px] font-bold">
-                Add to Cart <FaShoppingCart />
-              </li>
-            </ul>
+                <ul className="">
+                  <li className="flex items-center justify-end gap-x-2 lg:gap-x-4 text-[#767676] font-sans text-[10px] lg:text-[16px] font-normal">
+                    Add to Wish List <FaHeart className="text-[#262626]" />
+                  </li>
+                  <li className="flex items-center justify-end gap-x-2 lg:gap-x-4 lg:py-2 text-[#767676] font-sans text-[10px] lg:text-[16px] font-normal">
+                    Compare <TfiReload className="text-[#262626]" />
+                  </li>
+                  <li className="flex items-center justify-end gap-x-2 lg:gap-x-4 text-[#262626] font-sans text-[10px] lg:text-[16px] font-bold">
+                    Add to Cart <FaShoppingCart />
+                  </li>
+                </ul>
               </div>
             </div>
             <div className="flex justify-between items-center py-3">
@@ -98,17 +98,17 @@ const Arrivals2 = () => {
             <div className="relative group overflow-hidden">
               <img src={Product4} className="" alt="" />
               <div className="bg-white absolute left-0 h-[50%] lg:h-[130px] duration-300 ease-in-out bottom-[-120px] w-full group-hover:bottom-[0px] flex items-center justify-end">
-              <ul className="">
-              <li className="flex items-center justify-end gap-x-2 lg:gap-x-4 text-[#767676] font-sans text-[10px] lg:text-[16px] font-normal">
-                Add to Wish List <FaHeart className="text-[#262626]" />
-              </li>
-              <li className="flex items-center justify-end gap-x-2 lg:gap-x-4 lg:py-2 text-[#767676] font-sans text-[10px] lg:text-[16px] font-normal">
-                Compare <TfiReload className="text-[#262626]" />
-              </li>
-              <li className="flex items-center justify-end gap-x-2 lg:gap-x-4 text-[#262626] font-sans text-[10px] lg:text-[16px] font-bold">
-                Add to Cart <FaShoppingCart />
-              </li>
-            </ul>
+                <ul className="">
+                  <li className="flex items-center justify-end gap-x-2 lg:gap-x-4 text-[#767676] font-sans text-[10px] lg:text-[16px] font-normal">
+                    Add to Wish List <FaHeart className="text-[#262626]" />
+                  </li>
+                  <li className="flex items-center justify-end gap-x-2 lg:gap-x-4 lg:py-2 text-[#767676] font-sans text-[10px] lg:text-[16px] font-normal">
+                    Compare <TfiReload className="text-[#262626]" />
+                  </li>
+                  <li className="flex items-center justify-end gap-x-2 lg:gap-x-4 text-[#262626] font-sans text-[10px] lg:text-[16px] font-bold">
+                    Add to Cart <FaShoppingCart />
+                  </li>
+                </ul>
               </div>
             </div>
             <div className="flex justify-between items-center py-3">
@@ -120,7 +120,6 @@ const Arrivals2 = () => {
               </p>
             </div>
           </div>
-          
         </div>
         <div className="w-full my-6 lg:my-[64px]">
           <img src={Ad4} alt="" />
@@ -129,21 +128,21 @@ const Arrivals2 = () => {
           Special Offers
         </div>
         <div className="flex flex-wrap justify-between lg:mb-[106px]">
-        <div className="w-[48%] lg:w-[24%] py-5">
+          <div className="w-[48%] lg:w-[24%] py-5">
             <div className="relative group overflow-hidden">
               <img src={SpecialOffer1} className="" alt="" />
               <div className="bg-white absolute left-0 h-[50%] lg:h-[130px] duration-300 ease-in-out bottom-[-120px] w-full group-hover:bottom-[0px] flex items-center justify-end">
-              <ul className="">
-              <li className="flex items-center justify-end gap-x-2 lg:gap-x-4 text-[#767676] font-sans text-[10px] lg:text-[16px] font-normal">
-                Add to Wish List <FaHeart className="text-[#262626]" />
-              </li>
-              <li className="flex items-center justify-end gap-x-2 lg:gap-x-4 lg:py-2 text-[#767676] font-sans text-[10px] lg:text-[16px] font-normal">
-                Compare <TfiReload className="text-[#262626]" />
-              </li>
-              <li className="flex items-center justify-end gap-x-2 lg:gap-x-4 text-[#262626] font-sans text-[10px] lg:text-[16px] font-bold">
-                Add to Cart <FaShoppingCart />
-              </li>
-            </ul>
+                <ul className="">
+                  <li className="flex items-center justify-end gap-x-2 lg:gap-x-4 text-[#767676] font-sans text-[10px] lg:text-[16px] font-normal">
+                    Add to Wish List <FaHeart className="text-[#262626]" />
+                  </li>
+                  <li className="flex items-center justify-end gap-x-2 lg:gap-x-4 lg:py-2 text-[#767676] font-sans text-[10px] lg:text-[16px] font-normal">
+                    Compare <TfiReload className="text-[#262626]" />
+                  </li>
+                  <li className="flex items-center justify-end gap-x-2 lg:gap-x-4 text-[#262626] font-sans text-[10px] lg:text-[16px] font-bold">
+                    Add to Cart <FaShoppingCart />
+                  </li>
+                </ul>
               </div>
             </div>
             <div className="flex justify-between items-center py-3">
@@ -159,17 +158,17 @@ const Arrivals2 = () => {
             <div className="relative group overflow-hidden">
               <img src={SpecialOffer2} className="" alt="" />
               <div className="bg-white absolute left-0 h-[50%] lg:h-[130px] duration-300 ease-in-out bottom-[-120px] w-full group-hover:bottom-[0px] flex items-center justify-end">
-              <ul className="">
-              <li className="flex items-center justify-end gap-x-2 lg:gap-x-4 text-[#767676] font-sans text-[10px] lg:text-[16px] font-normal">
-                Add to Wish List <FaHeart className="text-[#262626]" />
-              </li>
-              <li className="flex items-center justify-end gap-x-2 lg:gap-x-4 lg:py-2 text-[#767676] font-sans text-[10px] lg:text-[16px] font-normal">
-                Compare <TfiReload className="text-[#262626]" />
-              </li>
-              <li className="flex items-center justify-end gap-x-2 lg:gap-x-4 text-[#262626] font-sans text-[10px] lg:text-[16px] font-bold">
-                Add to Cart <FaShoppingCart />
-              </li>
-            </ul>
+                <ul className="">
+                  <li className="flex items-center justify-end gap-x-2 lg:gap-x-4 text-[#767676] font-sans text-[10px] lg:text-[16px] font-normal">
+                    Add to Wish List <FaHeart className="text-[#262626]" />
+                  </li>
+                  <li className="flex items-center justify-end gap-x-2 lg:gap-x-4 lg:py-2 text-[#767676] font-sans text-[10px] lg:text-[16px] font-normal">
+                    Compare <TfiReload className="text-[#262626]" />
+                  </li>
+                  <li className="flex items-center justify-end gap-x-2 lg:gap-x-4 text-[#262626] font-sans text-[10px] lg:text-[16px] font-bold">
+                    Add to Cart <FaShoppingCart />
+                  </li>
+                </ul>
               </div>
             </div>
             <div className="flex justify-between items-center py-3">
@@ -185,17 +184,17 @@ const Arrivals2 = () => {
             <div className="relative group overflow-hidden">
               <img src={SpecialOffer3} className="" alt="" />
               <div className="bg-white absolute left-0 h-[50%] lg:h-[130px] duration-300 ease-in-out bottom-[-120px] w-full group-hover:bottom-[0px] flex items-center justify-end">
-              <ul className="">
-              <li className="flex items-center justify-end gap-x-2 lg:gap-x-4 text-[#767676] font-sans text-[10px] lg:text-[16px] font-normal">
-                Add to Wish List <FaHeart className="text-[#262626]" />
-              </li>
-              <li className="flex items-center justify-end gap-x-2 lg:gap-x-4 lg:py-2 text-[#767676] font-sans text-[10px] lg:text-[16px] font-normal">
-                Compare <TfiReload className="text-[#262626]" />
-              </li>
-              <li className="flex items-center justify-end gap-x-2 lg:gap-x-4 text-[#262626] font-sans text-[10px] lg:text-[16px] font-bold">
-                Add to Cart <FaShoppingCart />
-              </li>
-            </ul>
+                <ul className="">
+                  <li className="flex items-center justify-end gap-x-2 lg:gap-x-4 text-[#767676] font-sans text-[10px] lg:text-[16px] font-normal">
+                    Add to Wish List <FaHeart className="text-[#262626]" />
+                  </li>
+                  <li className="flex items-center justify-end gap-x-2 lg:gap-x-4 lg:py-2 text-[#767676] font-sans text-[10px] lg:text-[16px] font-normal">
+                    Compare <TfiReload className="text-[#262626]" />
+                  </li>
+                  <li className="flex items-center justify-end gap-x-2 lg:gap-x-4 text-[#262626] font-sans text-[10px] lg:text-[16px] font-bold">
+                    Add to Cart <FaShoppingCart />
+                  </li>
+                </ul>
               </div>
             </div>
             <div className="flex justify-between items-center py-3">
@@ -211,17 +210,17 @@ const Arrivals2 = () => {
             <div className="relative group overflow-hidden">
               <img src={SpecialOffer4} className="" alt="" />
               <div className="bg-white absolute left-0 h-[50%] lg:h-[130px] duration-300 ease-in-out bottom-[-120px] w-full group-hover:bottom-[0px] flex items-center justify-end">
-              <ul className="">
-              <li className="flex items-center justify-end gap-x-2 lg:gap-x-4 text-[#767676] font-sans text-[10px] lg:text-[16px] font-normal">
-                Add to Wish List <FaHeart className="text-[#262626]" />
-              </li>
-              <li className="flex items-center justify-end gap-x-2 lg:gap-x-4 lg:py-2 text-[#767676] font-sans text-[10px] lg:text-[16px] font-normal">
-                Compare <TfiReload className="text-[#262626]" />
-              </li>
-              <li className="flex items-center justify-end gap-x-2 lg:gap-x-4 text-[#262626] font-sans text-[10px] lg:text-[16px] font-bold">
-                Add to Cart <FaShoppingCart />
-              </li>
-            </ul>
+                <ul className="">
+                  <li className="flex items-center justify-end gap-x-2 lg:gap-x-4 text-[#767676] font-sans text-[10px] lg:text-[16px] font-normal">
+                    Add to Wish List <FaHeart className="text-[#262626]" />
+                  </li>
+                  <li className="flex items-center justify-end gap-x-2 lg:gap-x-4 lg:py-2 text-[#767676] font-sans text-[10px] lg:text-[16px] font-normal">
+                    Compare <TfiReload className="text-[#262626]" />
+                  </li>
+                  <li className="flex items-center justify-end gap-x-2 lg:gap-x-4 text-[#262626] font-sans text-[10px] lg:text-[16px] font-bold">
+                    Add to Cart <FaShoppingCart />
+                  </li>
+                </ul>
               </div>
             </div>
             <div className="flex justify-between items-center py-3">

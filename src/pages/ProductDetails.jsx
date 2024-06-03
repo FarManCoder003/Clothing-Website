@@ -111,13 +111,12 @@ const ProductDetails = () => {
                 Add to Wish List
               </button>
               <div className="w-1/2">
-              <Link to="/cart" onClick={() => handleAddTocart(singleData)}>
-                <button className="w-full lg:w-[200px] h-[50px] border border-[#262626] font-sans text-[14px] font-bold text-[#262626] bg-[#fff] hover:bg-[#262626] hover:text-[#fff] transition duration-700 ease-in-out">
-                  Add to Cart
-                </button>
-              </Link>
+                <Link to="/cart" onClick={() => handleAddTocart(singleData)}>
+                  <button className="w-full lg:w-[200px] h-[50px] border border-[#262626] font-sans text-[14px] font-bold text-[#262626] bg-[#fff] hover:bg-[#262626] hover:text-[#fff] transition duration-700 ease-in-out">
+                    Add to Cart
+                  </button>
+                </Link>
               </div>
-              
             </div>
             <ProductDetailsAccordian />
             <Flex className="mt-[48px] lg:mt-[123px] mb-[42px] gap-[62px]">
