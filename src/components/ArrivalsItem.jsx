@@ -12,7 +12,7 @@ const ArrivalsItem = ({ item }) => {
             alt=""
           />
           <div className="bg-white absolute left-0 h-[50%] lg:h-[38%] duration-300 ease-in-out bottom-[-120px] w-full group-hover:bottom-[0px] flex items-center justify-end">
-            <ul className="">
+            <ul className="pr-5">
               <li className="flex items-center justify-end gap-x-2 lg:gap-x-4 text-[#767676] font-sans text-[10px] lg:text-[16px] font-normal">
                 Add to Wish List <FaHeart className="text-[#262626]" />
               </li>
