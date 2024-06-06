@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   productIncrement,
   productDecrement,
+  removeProduct,
 } from "../components/slice/productSlice";
 
 const AddtoCart = () => {
@@ -19,6 +20,9 @@ const AddtoCart = () => {
   };
   let handleDecrement = (index) => {
     dispatch(productDecrement(index));
+  };removeProduct
+  let handleRemove = (index) => {
+    dispatch(removeProduct(index));
   };
   let productTotal = () => {
     let total = 0;
@@ -54,7 +58,7 @@ const AddtoCart = () => {
           {data.map((item, index) => (
             <Flex className="items-center px-4 lg:px-[20px] py-[30px] border-x-[1px] border-x-[#F0F0F0]">
               <div className="w-1/3 lg:w-6/12 flex items-center">
-                <div className="mr-[15px] lg:mr-[40px] ">
+                <div className="mr-[15px] lg:mr-[40px] " onClick={() => handleRemove(index)}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="10"
