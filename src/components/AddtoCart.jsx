@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Container from "./Container";
 import Flex from "./Flex";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,11 +8,13 @@ import {
   removeProduct,
 } from "../components/slice/productSlice";
 import { RxCross2 } from "react-icons/rx";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const AddtoCart = () => {
   let dispatch = useDispatch();
-
+  let navigate = useNavigate();
   let data = useSelector((state) => state.product.cartItem);
-
   let handleIncrement = (index) => {
     if (data[index].qun < data[index].stock) {
       dispatch(productIncrement(index));
@@ -21,7 +23,6 @@ const AddtoCart = () => {
   let handleDecrement = (index) => {
     dispatch(productDecrement(index));
   };
-  
   let handleRemove = (index) => {
     dispatch(removeProduct(index));
   };
@@ -31,6 +32,22 @@ const AddtoCart = () => {
       total += item.price * item.qun;
     });
     return total.toFixed(2);
+  };
+  const { totalQuantity } = data.reduce(
+    (acc, item) => {
+      acc.totalQuantity += item.qun;
+      return acc;
+    },
+    { totalQuantity: 0 }
+  );
+  let handleCheckOut = () => {
+    toast("Checking Out");
+    setTimeout(() => {
+      navigate("/checkout");
+    }, 1700);
+  };
+  let handleUpdateCart = () => {
+    toast("Cart updated");
   };
   return (
     <>
@@ -59,7 +76,10 @@ const AddtoCart = () => {
           {data.map((item, index) => (
             <Flex className="items-center px-4 lg:px-[20px] py-[30px] border-x-[1px] border-x-[#F0F0F0]">
               <div className="w-1/3 lg:w-6/12 flex items-center">
-                <div className="mr-[15px] lg:mr-[40px] onClick={() => handleRemove (index)}">
+                <div
+                  className="mr-[15px] lg:mr-[40px] cursor-pointer"
+                  onClick={() => handleRemove(index)}
+                >
                   <RxCross2 />
                 </div>
                 <div className="w-[100px] lg:h-[100px] lg:mr-[20px]">
@@ -109,7 +129,10 @@ const AddtoCart = () => {
             <div className="text-[#262626] font-sans font-bold ml-[5px] lg:ml-[23px] text-[14px]">
               Apply coupon
             </div>
-            <div className="text-[#262626] ml-auto font-sans font-bold text-[14px]">
+            <div
+              className="text-[#262626] ml-auto font-sans font-bold text-[14px] cursor-pointer"
+              onClick={handleUpdateCart}
+            >
               Update cart
             </div>
           </Flex>
@@ -119,11 +142,17 @@ const AddtoCart = () => {
           <Flex className="lg:w-5/12 ml-auto border border-[#F0F0F0]">
             <div className="w-1/2 text-[#262626] text-[16px] font-sans font-bold border-r border-r-[#F0F0F0]">
               <div className="pl-[20px] pt-[17px] pb-[14px] border-b border-b-[#F0F0F0]">
+                Total Quantity
+              </div>
+              <div className="pl-[20px] pt-[17px] pb-[14px] border-b border-b-[#F0F0F0]">
                 Subtotal
               </div>
               <div className="pl-[20px] pt-[17px] pb-[14px] ">Total</div>
             </div>
             <div className="w-1/2 text-[16px] font-sans">
+              <div className="text-[#767676] font-normal pl-[20px] pt-[17px] pb-[14px] border-b border-b-[#F0F0F0]">
+                {totalQuantity}
+              </div>
               <div className="text-[#767676] font-normal pl-[20px] pt-[17px] pb-[14px] border-b border-b-[#F0F0F0]">
                 $ {productTotal()}
               </div>
@@ -132,9 +161,24 @@ const AddtoCart = () => {
               </div>
             </div>
           </Flex>
-          <div className="w-[200px] h-[50px] leading-[50px] text-center mt-[30px] ml-auto bg-black text-white font-sans text-[14px] font-bold cursor-pointer">
+          <div
+            className="w-[200px] h-[50px] leading-[50px] text-center mt-[30px] ml-auto bg-black text-white font-sans text-[14px] font-bold cursor-pointer"
+            onClick={handleCheckOut}
+          >
             Proceed to Checkout
           </div>
+          <ToastContainer
+            position="top-right"
+            autoClose={800}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+          />
         </Container>
       </section>
     </>

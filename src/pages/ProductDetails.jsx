@@ -1,12 +1,14 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Container from "../components/Container";
 import Flex from "../components/Flex";
 import { FaRegStar, FaRegStarHalfStroke, FaStar } from "react-icons/fa6";
 import ProductDetailsAccordian from "../components/ProductDetailsAccordian";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../components/slice/productSlice";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ProductDetails = () => {
   useEffect(() => {
@@ -15,6 +17,7 @@ const ProductDetails = () => {
   let [singleData, setSingleData] = useState([]);
   let productId = useParams();
   let dispatch = useDispatch();
+  let navigate = useNavigate();
   let getData = () => {
     axios
       .get(`https://dummyjson.com/products/${productId.id}`)
@@ -37,6 +40,15 @@ const ProductDetails = () => {
   });
   let handleAddTocart = (item) => {
     dispatch(addToCart({ ...item, qun: 1 }));
+  };
+  let handleCart = () => {
+    toast("Added to Cart");
+    setTimeout(() => {
+      navigate("/cart");
+    }, 1700);
+  };
+  let handleWishList = () => {
+    toast("Added to Wish List");
   };
 
   return (
@@ -107,15 +119,19 @@ const ProductDetails = () => {
               </div>
             </Flex>
             <div className="flex gap-[20px] mb-[30px]">
-              <button className="w-1/2 lg:w-[200px] h-[50px] border border-[#262626] font-sans text-[14px] font-bold text-[#262626] bg-[#fff] hover:bg-[#262626] hover:text-[#fff] transition duration-700 ease-in-out">
+              <button
+                className="w-1/2 lg:w-[200px] h-[50px] border border-[#262626] font-sans text-[14px] font-bold text-[#262626] bg-[#fff] hover:bg-[#262626] hover:text-[#fff] transition duration-700 ease-in-out"
+                onClick={handleWishList}
+              >
                 Add to Wish List
               </button>
-              <div className="w-1/2">
-                <Link to="/cart" onClick={() => handleAddTocart(singleData)}>
-                  <button className="w-full lg:w-[200px] h-[50px] border border-[#262626] font-sans text-[14px] font-bold text-[#262626] bg-[#fff] hover:bg-[#262626] hover:text-[#fff] transition duration-700 ease-in-out">
-                    Add to Cart
-                  </button>
-                </Link>
+              <div className="w-1/2" onClick={handleCart}>
+                <button
+                  className="w-full lg:w-[200px] h-[50px] border border-[#262626] font-sans text-[14px] font-bold text-[#262626] bg-[#fff] hover:bg-[#262626] hover:text-[#fff] transition duration-700 ease-in-out"
+                  onClick={() => handleAddTocart(singleData)}
+                >
+                  Add to Cart
+                </button>
               </div>
             </div>
             <ProductDetailsAccordian />
@@ -225,6 +241,18 @@ const ProductDetails = () => {
               </button>
             </div>
           </div>
+          <ToastContainer
+            position="top-right"
+            autoClose={800}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+          />
         </Container>
       </section>
     </>

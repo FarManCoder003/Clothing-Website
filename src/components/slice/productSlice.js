@@ -30,10 +30,10 @@ export const productSlice = createSlice({
         localStorage.setItem("cart", JSON.stringify(state.cartItem));
       }
     },
-    removeProduct:(state, action)=>{
+    removeProduct: (state, action) => {
       state.cartItem.splice(action.payload, 1);
       localStorage.setItem("cart", JSON.stringify(state.cartItem));
-  },
+    },
   },
 });
 

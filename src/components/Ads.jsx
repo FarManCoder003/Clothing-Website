@@ -14,7 +14,7 @@ const Ads = () => {
           </div>
           <div className="w-1/2  lg:ml-[40px] ml-[20px]">
             <img src={Ad2} alt="" className="w-full pb-[20px] lg:pb-[40px]" />
-            <img src={Ad3} alt="" className="w-full"/>
+            <img src={Ad3} alt="" className="w-full" />
           </div>
         </Flex>
       </Container>

@@ -19,23 +19,23 @@ const Header = () => {
             <ul
               className={`lg:flex z-50  gap-x-10 lg:text-start text-center lg:p-0 p-2 absolute lg:static duration-700 ease-out ${
                 show == true
-                  ? "bg-[gray] lg:top-[50px] block top-10 right-0 w-[100px]"
+                  ? "bg-[#262626] lg:top-[50px] block top-10 right-0 w-[100px]"
                   : "lg:top-[50px] hidden top-10 left-[-100px]"
               }`}
             >
-              <li className="font-sans text-[16px] lg:text-[#767676] text-[white] hover:text-[#262626]">
+              <li className="font-sans text-[16px] lg:text-[#767676] text-[rgba(255,255,255,0.7)] hover:text-[white] lg:hover:text-[black] cursor-pointer">
                 <Link to="/">Home</Link>
               </li>
-              <li className="font-sans text-[16px] lg:text-[#767676] text-[white] hover:text-[#262626]">
+              <li className="font-sans text-[16px] lg:text-[#767676] text-[rgba(255,255,255,0.7)] hover:text-[white] lg:hover:text-[black] cursor-pointer">
                 <Link to="/shop">Shop</Link>
               </li>
-              <li className="font-sans text-[16px] lg:text-[#767676] text-[white] hover:text-[#262626]">
+              <li className="font-sans text-[16px] lg:text-[#767676] text-[rgba(255,255,255,0.7)] hover:text-[white] lg:hover:text-[black] cursor-pointer">
                 About
               </li>
-              <li className="font-sans text-[16px] lg:text-[#767676] text-[white] hover:text-[#262626]">
+              <li className="font-sans text-[16px] lg:text-[#767676] text-[rgba(255,255,255,0.7)] hover:text-[white] lg:hover:text-[black] cursor-pointer">
                 Contacts
               </li>
-              <li className="font-sans text-[16px] lg:text-[#767676] text-[white] hover:text-[#262626]">
+              <li className="font-sans text-[16px] lg:text-[#767676] text-[rgba(255,255,255,0.7)] hover:text-[white] lg:hover:text-[black] cursor-pointer">
                 Journal
               </li>
             </ul>
