@@ -31,8 +31,8 @@ export const productSlice = createSlice({
       }
     },
     removeProduct:(state, action)=>{
-      state.cartItem.splice(action.payload, 1)
-      localStorage.setItem("cart", JSON.stringify(state.cartItem))
+      state.cartItem.splice(action.payload, 1);
+      localStorage.setItem("cart", JSON.stringify(state.cartItem));
   },
   },
 });
