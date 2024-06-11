@@ -9,7 +9,7 @@ const ContextApi = ({ children }) => {
   let getData = () =>
     axios
       .get(
-        "https://dummyjson.com/products?sortBy=id&order=desc&limit=0&skip=88"
+        "https://dummyjson.com/products?sortBy=id&order=desc&limit=0"
       )
       .then((response) => {
         setInfo(response.data.products);
