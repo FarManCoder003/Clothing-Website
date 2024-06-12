@@ -13,7 +13,9 @@ const Header = () => {
       <Container>
         <Flex className="justify-between items-center py-3">
           <div className="w-1/3">
-            <img src={Logo} alt="logo" />
+            <Link to="/">
+              <img src={Logo} alt="logo" />
+            </Link>
           </div>
           <div className="w-2/3">
             <ul

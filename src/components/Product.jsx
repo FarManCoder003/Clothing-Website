@@ -56,7 +56,7 @@ const Product = () => {
   };
   let [show, setShow] = useState(true);
   let [shows, setShows] = useState(true);
-  let [catshow, setCatShow] = useState(false);
+  let [catshow, setCatShow] = useState(true);
 
   return (
     <>
@@ -75,7 +75,9 @@ const Product = () => {
                 className="flex justify-between items-center text-[#262626] font-sans text-[20px] font-bold mb-[26px] cursor-pointer"
               >
                 Shop by Category
-                <p className="mr-[36px]">{catshow == true ? <FaAngleUp /> : <FaAngleDown />}</p>
+                <p className="mr-[36px]">
+                  {catshow == true ? <FaAngleUp /> : <FaAngleDown />}
+                </p>
               </h3>
               {catshow && (
                 <ul className="mb-[74px]">

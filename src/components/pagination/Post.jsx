@@ -4,12 +4,17 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 
 const Post = ({ allData, categorySearchFilter }) => {
-  let [showAll, setShowAll] = useState(false); 
+  let [showAll, setShowAll] = useState(false);
   let handleShowAll = () => {
     setShowAll(true);
   };
 
-  let visibleItems = categorySearchFilter.slice(0, showAll ? categorySearchFilter.length : Math.min(5, categorySearchFilter.length));
+  let visibleItems = categorySearchFilter.slice(
+    0,
+    showAll
+      ? categorySearchFilter.length
+      : Math.min(6, categorySearchFilter.length)
+  );
   return (
     <>
       {categorySearchFilter.length > 0
@@ -86,13 +91,15 @@ const Post = ({ allData, categorySearchFilter }) => {
                 </div>
               </Link>
             </div>
-          ))
-      }
-      {!showAll && categorySearchFilter.length > 5 && (
+          ))}
+      {!showAll && categorySearchFilter.length > 6 && (
         <div className="relative  mt-4 w-full text-center cursor-default after:absolute after:w-full after:content-'' after:top-[50%] after:left-0 after:h-[1px] after:bg-[black] after:-z-10">
-        <button onClick={handleShowAll} className="py-[10px] px-[14px] text-[#262626] hover:bg-[#262626] hover:text-white duration-500 ease-in-out bg-[white] font-sans text-[14px] font-bold border-[1px] rounded-full border-[#262626]">
-          Show All
-        </button>
+          <button
+            onClick={handleShowAll}
+            className="py-[10px] px-[14px] text-[#262626] hover:bg-[#262626] hover:text-white duration-500 ease-in-out bg-[white] font-sans text-[14px] font-bold border-[1px] rounded-full border-[#262626]"
+          >
+            Show All
+          </button>
         </div>
       )}
     </>

@@ -127,47 +127,47 @@ const Navbar = () => {
                 </ul>
               </div>
             )}
-
-            {usercartShow && (
+            {usercartShow && data.length > 0 && (
               <div className="w-[350px] z-50 absolute bg-[#F5F5F3] top-[30px] right-0">
-                  <div className="p-4">
-                {data.map((item) => (
+                <div className="p-4">
+                  {data.map((item) => (
                     <div className="font-sans flex gap-x-3 items-center my-[10px]">
                       <div>
-                        <img src={item.thumbnail} alt="" className="w-[40px] h-[40px]"/>
+                        <img
+                          src={item.thumbnail}
+                          alt=""
+                          className="w-[40px] h-[40px]"
+                        />
                       </div>
                       <div className="font-sans">
-                        <h3>{item.title} x {item.qun}</h3>
-                        <h5>${item.price}  </h5>
+                        <h3>
+                          {item.title} x {item.qun}
+                        </h3>
+                        <h5>${(item.price * item.qun).toFixed(2)}</h5>
                       </div>
                       <div className="cursor-pointer ml-auto">
                         <RxCross2 />
                       </div>
                     </div>
-                ))}
-
-                    <div className="">
-                      <h3 className="pl-4 py-3">
-                        Subtotal: <span>${productTotal()}</span>
-                      </h3>
-                      <div className="flex justify-around gap-3">
-                        <Link to="/cart">
-                          <a
-                            className="w-[148px] h-[50px] border-[1px] border-[#262626] inline-block text-center leading-[50px]"
-                          >
-                            View Cart
-                          </a>
-                        </Link>
-                        <Link to="/CheckOut">
-                          <a
-                            className="w-[148px] h-[50px] border-[1px] border-[#262626] inline-block text-center leading-[50px]"
-                          >
-                            Checkout
-                          </a>
-                        </Link>
-                      </div>
+                  ))}
+                  <div className="">
+                    <h3 className="pl-4 py-3">
+                      Subtotal: <span>${productTotal()}</span>
+                    </h3>
+                    <div className="flex justify-around gap-3">
+                      <Link to="/cart">
+                        <a className="w-[148px] h-[50px] border-[1px] border-[#262626] inline-block text-center leading-[50px]">
+                          View Cart
+                        </a>
+                      </Link>
+                      <Link to="/CheckOut">
+                        <a className="w-[148px] h-[50px] border-[1px] border-[#262626] inline-block text-center leading-[50px]">
+                          Checkout
+                        </a>
+                      </Link>
                     </div>
                   </div>
+                </div>
               </div>
             )}
           </div>
