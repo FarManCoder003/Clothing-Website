@@ -3,11 +3,13 @@ import { FaCartPlus, FaSearch, FaUser } from "react-icons/fa";
 import { FaBars } from "react-icons/fa6";
 import { MdArrowDropDown } from "react-icons/md";
 import { RxCross2 } from "react-icons/rx";
-import CartImg from "../assets/cart.png";
 import Container from "./Container";
 import Flex from "./Flex";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
+  let data = useSelector((state) => state.product.cartItem);
   let [cartShow, setCartShow] = useState(false);
   let [usercartShow, setUsercartShow] = useState(false);
   let [userShow, setuserShow] = useState(false);
@@ -35,11 +37,19 @@ const Navbar = () => {
     });
   }, [cartShow, usercartShow, userShow]);
 
+  let productTotal = () => {
+    let total = 0;
+    data.forEach((item) => {
+      total += item.price * item.qun;
+    });
+    return total.toFixed(2);
+  };
+
   return (
     <nav className="lg:fixed z-[999] w-[100%] bg-[#F5F5F3] py-4 pt-[55px] lg:pt-[64px]">
       <Container>
         <Flex className="items-center">
-          <div className="w-[30%] relative">
+          <div className="w-[30%] relative cursor-pointer">
             <div ref={cartref} className="flex items-center gap-x-3">
               <FaBars />
               <p className="font-sans hidden lg:block text-[16px] lg:text-[#767676] text-[white] hover:text-[#262626]">
@@ -83,14 +93,23 @@ const Navbar = () => {
               </div>
             </div>
           </div>
-          <div className="w-[30%] relative">
-            <div className="flex justify-end items-center gap-x-2">
+          <div className="w-[30%] relative ">
+            <div className="flex justify-end items-center gap-x-2 cursor-pointer">
               <div className="flex" ref={userAccref}>
                 <FaUser />
                 <MdArrowDropDown />
               </div>
               <div ref={userref} className="">
-                <FaCartPlus />
+                <div className="relative">
+                  <FaCartPlus />
+                  {data.length > 0 ? (
+                    <div className="absolute h-[15px] leading-[15px] w-[15px] bg-[#262626] left-[10px] top-[-15px] rounded-full text-xs font-sans text-center text-white">
+                      {data.length}
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                </div>
               </div>
             </div>
             {userShow && (
@@ -110,44 +129,45 @@ const Navbar = () => {
             )}
 
             {usercartShow && (
-              <div className="w-[330px] z-50 absolute bg-[#F5F5F3] top-[30px] right-0">
-                <div className="p-4 ">
-                  <div className="flex justify-around items-center">
-                    <div className="">
-                      <img src={CartImg} alt="" />
-                    </div>
-                    <div className="">
-                      <h3>Black Smart Watch</h3>
-                      <h5>$44.00</h5>
-                    </div>
-                    <div className="">
-                      <RxCross2 />
-                    </div>
-                  </div>
-                  <div className="">
-                    <h3 className="pl-4 py-3">
-                      Subtotal: <span>$44.00</span>
-                    </h3>
-                    <div className="flex justify-around gap-3">
-                      <div className="">
-                        <a
-                          className="w-[148px] h-[50px] border-[1px] border-[#262626] inline-block text-center leading-[50px]"
-                          href="#"
-                        >
-                          View Cart
-                        </a>
+              <div className="w-[350px] z-50 absolute bg-[#F5F5F3] top-[30px] right-0">
+                  <div className="p-4">
+                {data.map((item) => (
+                    <div className="font-sans flex gap-x-3 items-center my-[10px]">
+                      <div>
+                        <img src={item.thumbnail} alt="" className="w-[40px] h-[40px]"/>
                       </div>
-                      <div className="">
-                        <a
-                          className="w-[148px] h-[50px] border-[1px] border-[#262626] inline-block text-center leading-[50px]"
-                          href="#"
-                        >
-                          Checkout
-                        </a>
+                      <div className="font-sans">
+                        <h3>{item.title} x {item.qun}</h3>
+                        <h5>${item.price}  </h5>
+                      </div>
+                      <div className="cursor-pointer ml-auto">
+                        <RxCross2 />
                       </div>
                     </div>
+                ))}
+
+                    <div className="">
+                      <h3 className="pl-4 py-3">
+                        Subtotal: <span>${productTotal()}</span>
+                      </h3>
+                      <div className="flex justify-around gap-3">
+                        <Link to="/cart">
+                          <a
+                            className="w-[148px] h-[50px] border-[1px] border-[#262626] inline-block text-center leading-[50px]"
+                          >
+                            View Cart
+                          </a>
+                        </Link>
+                        <Link to="/CheckOut">
+                          <a
+                            className="w-[148px] h-[50px] border-[1px] border-[#262626] inline-block text-center leading-[50px]"
+                          >
+                            Checkout
+                          </a>
+                        </Link>
+                      </div>
+                    </div>
                   </div>
-                </div>
               </div>
             )}
           </div>

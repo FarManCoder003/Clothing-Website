@@ -1,7 +1,7 @@
 import Container from "../components/Container";
 import Flex from "../components/Flex";
 import { apiData } from "../components/ContextApi";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Post from "../components/pagination/Post";
 import PaginationArea from "../components/pagination/PaginationArea";
@@ -16,10 +16,29 @@ const Product = () => {
   let lastPage = currentPage * perPage;
   let firstPage = lastPage - perPage;
   let allData = data.slice(firstPage, lastPage);
+  let [category, setCategory] = useState([]);
+  let [categorySearchFilter, setCategorySearchFilter] = useState([]);
   let pageNumber = [];
-  for (let i = 0; i < Math.ceil(data.length / perPage); i++) {
+  for (
+    let i = 0;
+    i <
+    Math.ceil(
+      categorySearchFilter.length > 0
+        ? categorySearchFilter
+        : data.length / perPage
+    );
+    i++
+  ) {
     pageNumber.push(i);
   }
+  useEffect(() => {
+    setCategory([...new Set(data.map((item) => item.category))]);
+  }, [data]);
+
+  let handleSubcate = (citem) => {
+    let categoryFilter = data.filter((item) => item.category == citem);
+    setCategorySearchFilter(categoryFilter);
+  };
   let paginate = (pageNumber) => {
     setCurrentpage(pageNumber + 1);
   };
@@ -37,6 +56,8 @@ const Product = () => {
   };
   let [show, setShow] = useState(true);
   let [shows, setShows] = useState(true);
+  let [catshow, setCatShow] = useState(false);
+
   return (
     <>
       <section className="lg:py-[64px]">
@@ -49,26 +70,26 @@ const Product = () => {
           </div>
           <Flex className="my-[48px] lg:my-[124px]">
             <div className="hidden lg:block lg:w-3/12 relative">
-              <ul className="mb-[74px]">
-                <li className="text-[#262626] font-sans text-[20px] font-bold mb-[26px]">
-                  Shop by Category
-                </li>
-                <li className="text-[#767676] font-sans text-[12px] lg:text-[16px] font-normal my-[20px]">
-                  Category 1
-                </li>
-                <li className="text-[#767676] font-sans text-[12px] lg:text-[16px] font-normal my-[30px]">
-                  Category 2
-                </li>
-                <li className="text-[#767676] font-sans text-[12px] lg:text-[16px] font-normal my-[30px]">
-                  Category 3
-                </li>
-                <li className="text-[#767676] font-sans text-[12px] lg:text-[16px] font-normal my-[30px]">
-                  Category 4
-                </li>
-                <li className="text-[#767676] font-sans text-[12px] lg:text-[16px] font-normal my-[30px]">
-                  Category 5
-                </li>
-              </ul>
+              <h3
+                onClick={() => setCatShow(!catshow)}
+                className="flex justify-between items-center text-[#262626] font-sans text-[20px] font-bold mb-[26px] cursor-pointer"
+              >
+                Shop by Category
+                <p className="mr-[36px]">{catshow == true ? <FaAngleUp /> : <FaAngleDown />}</p>
+              </h3>
+              {catshow && (
+                <ul className="mb-[74px]">
+                  {category.map((item) => (
+                    <li
+                      onClick={() => handleSubcate(item)}
+                      className="text-[#767676] hover:text-black font-sans text-[12px] lg:text-[16px] font-normal my-[20px] cursor-pointer capitalize
+                      "
+                    >
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              )}
               <ul>
                 <li
                   onClick={() => setShow(!show)}
@@ -184,7 +205,10 @@ const Product = () => {
                 </div>
               </div>
               <div className="flex justify-between flex-wrap mt-[60px]">
-                <Post allData={allData} />
+                <Post
+                  allData={allData}
+                  categorySearchFilter={categorySearchFilter}
+                />
               </div>
               <div className="">
                 <PaginationArea
