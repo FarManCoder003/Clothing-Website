@@ -1,9 +1,11 @@
-import React from "react";
 import Container from "../components/Container";
 import { Link } from "react-router-dom";
 import ContactImg from "../assets/Contact.png";
-
+import { useEffect } from "react";
 const Contact = () => {
+  useEffect(() => {
+    window.scrollTo({ top: 0 });
+  });
   return (
     <>
       <Container>
