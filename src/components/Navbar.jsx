@@ -3,39 +3,39 @@ import { FaCartPlus, FaSearch, FaUser } from "react-icons/fa";
 import { FaBars } from "react-icons/fa6";
 import { MdArrowDropDown } from "react-icons/md";
 import { RxCross2 } from "react-icons/rx";
-import Container from "./Container";
-import Flex from "./Flex";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import Container from "./Container";
+import Flex from "./Flex";
 
 const Navbar = () => {
   let data = useSelector((state) => state.product.cartItem);
   let [cartShow, setCartShow] = useState(false);
-  let [usercartShow, setUsercartShow] = useState(false);
-  let [userShow, setuserShow] = useState(false);
-  let cartref = useRef();
-  let userref = useRef();
-  let userAccref = useRef();
+  let [userCartShow, setUserCartShow] = useState(false);
+  let [userShow, setUserShow] = useState(false);
+  let cartRef = useRef();
+  let userRef = useRef();
+  let userAccRef = useRef();
 
   useEffect(() => {
     document.addEventListener("click", (e) => {
-      if (cartref.current.contains(e.target) == true) {
+      if (cartRef.current.contains(e.target) == true) {
         setCartShow(!cartShow);
       } else {
         setCartShow(false);
       }
-      if (userref.current.contains(e.target) == true) {
-        setUsercartShow(!usercartShow);
+      if (userRef.current.contains(e.target) == true) {
+        setUserCartShow(!userCartShow);
       } else {
-        setUsercartShow(false);
+        setUserCartShow(false);
       }
-      if (userAccref.current.contains(e.target) == true) {
-        setuserShow(!userShow);
+      if (userAccRef.current.contains(e.target) == true) {
+        setUserShow(!userShow);
       } else {
-        setuserShow(false);
+        setUserShow(false);
       }
     });
-  }, [cartShow, usercartShow, userShow]);
+  }, [cartShow, userCartShow, userShow]);
 
   let productTotal = () => {
     let total = 0;
@@ -50,7 +50,7 @@ const Navbar = () => {
       <Container>
         <Flex className="items-center">
           <div className="w-[30%] relative cursor-pointer">
-            <div ref={cartref} className="flex items-center gap-x-3">
+            <div ref={cartRef} className="flex items-center gap-x-3">
               <FaBars />
               <p className="font-sans hidden lg:block text-[16px] lg:text-[#767676] text-[white] hover:text-[#262626]">
                 Shop by Category
@@ -60,7 +60,7 @@ const Navbar = () => {
               <div className="absolute z-50 top-[30px] left-0 bg-[#262626] w-[170px]">
                 <ul className="py-4">
                   <li className="text-[rgba(255,255,255,0.7)] font-sans text-sm lg:text-[16px] py-2 duration-300 ease-in-out pl-3 hover:pl-6 hover:text-white ">
-                    Accesories
+                    Accessories
                   </li>
                   <li className="text-[rgba(255,255,255,0.7)] font-sans text-sm lg:text-[16px] py-2 duration-300 ease-in-out pl-3 hover:pl-6 hover:text-white">
                     Furniture
@@ -95,11 +95,11 @@ const Navbar = () => {
           </div>
           <div className="w-[30%] relative ">
             <div className="flex justify-end items-center gap-x-2 cursor-pointer">
-              <div className="flex" ref={userAccref}>
+              <div className="flex" ref={userAccRef}>
                 <FaUser />
                 <MdArrowDropDown />
               </div>
-              <div ref={userref} className="">
+              <div ref={userRef} className="">
                 <div className="relative">
                   <FaCartPlus />
                   {data.length > 0 ? (
@@ -127,7 +127,7 @@ const Navbar = () => {
                 </ul>
               </div>
             )}
-            {usercartShow && data.length > 0 && (
+            {userCartShow && data.length > 0 && (
               <div className="w-[350px] z-50 absolute bg-[#F5F5F3] top-[30px] right-0">
                 <div className="p-4">
                   {data.map((item) => (
@@ -156,12 +156,12 @@ const Navbar = () => {
                     </h3>
                     <div className="flex justify-around gap-3">
                       <Link to="/cart">
-                        <a className="w-[148px] h-[50px] border-[1px] border-[#262626] inline-block text-center leading-[50px]">
+                        <a className="w-[148px] h-[50px] border-[1px] border-[#262626] inline-block text-center leading-[50px] hover:bg-[#262626] hover:text-[#FFF] duration-500 ease-in-out">
                           View Cart
                         </a>
                       </Link>
                       <Link to="/CheckOut">
-                        <a className="w-[148px] h-[50px] border-[1px] border-[#262626] inline-block text-center leading-[50px]">
+                        <a className="w-[148px] h-[50px] border-[1px] border-[#262626] inline-block text-center leading-[50px] hover:bg-[#262626] hover:text-[#FFF] duration-500 ease-in-out">
                           Checkout
                         </a>
                       </Link>

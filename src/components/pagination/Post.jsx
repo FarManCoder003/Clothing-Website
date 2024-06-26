@@ -1,24 +1,32 @@
 import { FaHeart, FaShoppingCart } from "react-icons/fa";
 import { TfiReload } from "react-icons/tfi";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Post = ({ allData, categorySearchFilter }) => {
-  let [showAll, setShowAll] = useState(false);
-  let handleShowAll = () => {
-    setShowAll(true);
+  let [filterShow, setFilterShow] = useState([]);
+  let [categoryShow, setCategoryShow] = useState(true);
+
+  useEffect(() => {
+    let filter = categorySearchFilter.slice(0, 6);
+    setFilterShow(filter);
+  }, [categorySearchFilter]);
+
+  let handleShow = () => {
+    setFilterShow(categorySearchFilter);
+    setCategoryShow(false);
   };
 
-  let visibleItems = categorySearchFilter.slice(
-    0,
-    showAll
-      ? categorySearchFilter.length
-      : Math.min(6, categorySearchFilter.length)
-  );
+  let handleHide = () => {
+    let filter = categorySearchFilter.slice(0, 6);
+    setFilterShow(filter);
+    setCategoryShow(true);
+  };
+
   return (
     <>
       {categorySearchFilter.length > 0
-        ? visibleItems.map((item) => (
+        ? filterShow.map((item) => (
             <div className="w-[48%] lg:w-[32%] lg:py-5">
               <Link to={`/shop/${item.id}`}>
                 <div className="">
@@ -92,13 +100,24 @@ const Post = ({ allData, categorySearchFilter }) => {
               </Link>
             </div>
           ))}
-      {!showAll && categorySearchFilter.length > 6 && (
+      {categoryShow ? (
+        categorySearchFilter.length > 6 && (
+          <div className="relative  mt-4 w-full text-center cursor-default after:absolute after:w-full after:content-'' after:top-[50%] after:left-0 after:h-[1px] after:bg-[black] after:-z-10">
+            <button
+              onClick={handleShow}
+              className="py-[10px] px-[14px] text-[#262626] hover:bg-[#262626] hover:text-white duration-500 ease-in-out bg-[white] font-sans text-[14px] font-bold border-[1px] rounded-full border-[#262626]"
+            >
+              Show All
+            </button>
+          </div>
+        )
+      ) : (
         <div className="relative  mt-4 w-full text-center cursor-default after:absolute after:w-full after:content-'' after:top-[50%] after:left-0 after:h-[1px] after:bg-[black] after:-z-10">
           <button
-            onClick={handleShowAll}
+            onClick={handleHide}
             className="py-[10px] px-[14px] text-[#262626] hover:bg-[#262626] hover:text-white duration-500 ease-in-out bg-[white] font-sans text-[14px] font-bold border-[1px] rounded-full border-[#262626]"
           >
-            Show All
+            Hide
           </button>
         </div>
       )}

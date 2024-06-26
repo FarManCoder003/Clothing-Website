@@ -9,9 +9,9 @@ import { FaPlus } from "react-icons/fa";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Flex from "../components/Flex";
+import Flex from "./Flex";
 
-const ProductDetailsAccordian = () => {
+const ProductDetailsAccordion = () => {
   let [singleData, setSingleData] = useState([]);
   let productId = useParams();
   let getData = () => {
@@ -72,4 +72,4 @@ const ProductDetailsAccordian = () => {
   );
 };
 
-export default ProductDetailsAccordian;
+export default ProductDetailsAccordion;

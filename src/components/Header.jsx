@@ -32,10 +32,10 @@ const Header = () => {
                 <Link to="/shop">Shop</Link>
               </li>
               <li className="font-sans text-[16px] lg:text-[#767676] text-[rgba(255,255,255,0.7)] hover:text-[white] lg:hover:text-[black] cursor-pointer">
-                About
+                <Link to="/about">About</Link>
               </li>
               <li className="font-sans text-[16px] lg:text-[#767676] text-[rgba(255,255,255,0.7)] hover:text-[white] lg:hover:text-[black] cursor-pointer">
-                Contacts
+                <Link to="/contact">Contacts</Link>
               </li>
               <li className="font-sans text-[16px] lg:text-[#767676] text-[rgba(255,255,255,0.7)] hover:text-[white] lg:hover:text-[black] cursor-pointer">
                 Journal

@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import Container from "../components/Container";
 import Flex from "../components/Flex";
 import { FaRegStar, FaRegStarHalfStroke, FaStar } from "react-icons/fa6";
-import ProductDetailsAccordian from "../components/ProductDetailsAccordian";
+import ProductDetailsAccordion from "../components/ProductDetailsAccordion";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../components/slice/productSlice";
 import { ToastContainer, toast } from "react-toastify";
@@ -38,7 +38,7 @@ const ProductDetails = () => {
       <FaRegStar className="text-[#FFD881]" />
     );
   });
-  let handleAddTocart = (item) => {
+  let handleAddToCart = (item) => {
     dispatch(addToCart({ ...item, qun: 1 }));
   };
   let handleCart = () => {
@@ -128,13 +128,13 @@ const ProductDetails = () => {
               <div className="w-1/2" onClick={handleCart}>
                 <button
                   className="w-full lg:w-[200px] h-[50px] border border-[#262626] font-sans text-[14px] font-bold text-[#262626] bg-[#fff] hover:bg-[#262626] hover:text-[#fff] transition duration-700 ease-in-out"
-                  onClick={() => handleAddTocart(singleData)}
+                  onClick={() => handleAddToCart(singleData)}
                 >
                   Add to Cart
                 </button>
               </div>
             </div>
-            <ProductDetailsAccordian />
+            <ProductDetailsAccordion />
             <Flex className="mt-[48px] lg:mt-[123px] mb-[42px] gap-[62px]">
               <div className="text-[#767676] font-sans font-normal text-[20px]">
                 Description

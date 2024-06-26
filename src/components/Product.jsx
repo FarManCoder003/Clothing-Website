@@ -1,5 +1,4 @@
 import Container from "../components/Container";
-import Flex from "../components/Flex";
 import { apiData } from "../components/ContextApi";
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -11,7 +10,7 @@ import { FaAngleUp, FaAngleDown } from "react-icons/fa";
 
 const Product = () => {
   let data = useContext(apiData);
-  let [currentPage, setCurrentpage] = useState(1);
+  let [currentPage, setCurrentPage] = useState(1);
   let [perPage, setPerPage] = useState(12);
   let lastPage = currentPage * perPage;
   let firstPage = lastPage - perPage;
@@ -35,28 +34,29 @@ const Product = () => {
     setCategory([...new Set(data.map((item) => item.category))]);
   }, [data]);
 
-  let handleSubcate = (citem) => {
-    let categoryFilter = data.filter((item) => item.category == citem);
+  let handleSubcategory = (items) => {
+    let categoryFilter = data.filter((item) => item.category == items);
     setCategorySearchFilter(categoryFilter);
   };
   let paginate = (pageNumber) => {
-    setCurrentpage(pageNumber + 1);
+    setCurrentPage(pageNumber + 1);
   };
 
   let prev = () => {
     if (currentPage > 1) {
-      setCurrentpage((state) => state - 1);
+      setCurrentPage((state) => state - 1);
     }
   };
 
   let next = () => {
     if (currentPage < pageNumber.length) {
-      setCurrentpage((state) => state + 1);
+      setCurrentPage((state) => state + 1);
     }
   };
-  let [show, setShow] = useState(true);
-  let [shows, setShows] = useState(true);
-  let [catshow, setCatShow] = useState(true);
+  let [categoryShow, setCategoryShow] = useState(false);
+  let [showColor, setShowColor] = useState(false);
+  let [showBrand, setShowBrand] = useState(false);
+  let [showPrice, setShowPrice] = useState(false);
 
   return (
     <>
@@ -68,22 +68,22 @@ const Product = () => {
           <div className="text-[#767676] font-sans font-normal text-[12px]">
             <Link to="/">Home</Link> &gt; <Link to="/shop">Products</Link>
           </div>
-          <Flex className="my-[48px] lg:my-[124px]">
-            <div className="hidden lg:block lg:w-3/12 relative">
+          <div className="lg:flex my-[48px] lg:my-[124px]">
+            <div className="w-full lg:w-3/12 relative">
               <h3
-                onClick={() => setCatShow(!catshow)}
+                onClick={() => setCategoryShow(!categoryShow)}
                 className="flex justify-between items-center text-[#262626] font-sans text-[20px] font-bold mb-[26px] cursor-pointer"
               >
                 Shop by Category
                 <p className="mr-[36px]">
-                  {catshow == true ? <FaAngleUp /> : <FaAngleDown />}
+                  {categoryShow == true ? <FaAngleUp /> : <FaAngleDown />}
                 </p>
               </h3>
-              {catshow && (
+              {categoryShow && (
                 <ul className="mb-[74px]">
                   {category.map((item) => (
                     <li
-                      onClick={() => handleSubcate(item)}
+                      onClick={() => handleSubcategory(item)}
                       className="text-[#767676] hover:text-black font-sans text-[12px] lg:text-[16px] font-normal my-[20px] cursor-pointer capitalize
                       "
                     >
@@ -94,15 +94,15 @@ const Product = () => {
               )}
               <ul>
                 <li
-                  onClick={() => setShow(!show)}
+                  onClick={() => setShowColor(!showColor)}
                   className="flex justify-between items-center text-[#262626] font-sans text-[20px] font-bold mb-[26px] cursor-pointer"
                 >
                   Shop by Color
                   <span className="text-[18px] mr-[36px]">
-                    {show == true ? <FaAngleUp /> : <FaAngleDown />}
+                    {showColor == true ? <FaAngleUp /> : <FaAngleDown />}
                   </span>
                 </li>
-                {show && (
+                {showColor && (
                   <div className="">
                     <li className="relative after:absolute after:top-[6px] after:left-[0] after:w-[11px] after:h-[11px] after:bg-[black] after:rounded-[100%]   text-[#767676] font-sans text-[12px] lg:text-[16px] font-normal pl-[20px] my-[20px]">
                       Color 1
@@ -124,15 +124,15 @@ const Product = () => {
               </ul>
               <ul>
                 <li
-                  onClick={() => setShows(!shows)}
+                  onClick={() => setShowBrand(!showBrand)}
                   className="flex justify-between items-center text-[#262626] font-sans text-[20px] font-bold mb-[26px] cursor-pointer"
                 >
                   Shop by Brand
                   <span className="text-[18px] mr-[36px]">
-                    {shows == true ? <FaAngleUp /> : <FaAngleDown />}
+                    {showBrand == true ? <FaAngleUp /> : <FaAngleDown />}
                   </span>
                 </li>
-                {shows && (
+                {showBrand && (
                   <div className="">
                     <li className="text-[#767676] font-sans text-[12px] lg:text-[16px] font-normal my-[20px]">
                       Brand 1
@@ -153,29 +153,39 @@ const Product = () => {
                 )}
               </ul>
               <ul className="mb-[74px]">
-                <li className="text-[#262626] font-sans text-[20px] font-bold mb-[26px]">
+                <li
+                  onClick={() => setShowPrice(!showPrice)}
+                  className="flex justify-between items-center text-[#262626] font-sans text-[20px] font-bold mb-[26px] cursor-pointer"
+                >
                   Shop by Price
+                  <span className="text-[18px] mr-[36px]">
+                    {showPrice == true ? <FaAngleUp /> : <FaAngleDown />}
+                  </span>
                 </li>
-                <li className="text-[#767676] font-sans text-[12px] lg:text-[16px] font-normal my-[20px]">
-                  $0.00 - $9.99
-                </li>
-                <li className="text-[#767676] font-sans text-[12px] lg:text-[16px] font-normal my-[30px]">
-                  $10.00 - $19.99
-                </li>
-                <li className="text-[#767676] font-sans text-[12px] lg:text-[16px] font-normal my-[30px]">
-                  $20.00 - $29.99
-                </li>
-                <li className="text-[#767676] font-sans text-[12px] lg:text-[16px] font-normal my-[30px]">
-                  $30.00 - $39.99
-                </li>
-                <li className="text-[#767676] font-sans text-[12px] lg:text-[16px] font-normal my-[30px]">
-                  $40.00 - $69.99
-                </li>
+                {showPrice && (
+                  <div className="">
+                    <li className="text-[#767676] font-sans text-[12px] lg:text-[16px] font-normal my-[20px]">
+                      $0.00 - $9.99
+                    </li>
+                    <li className="text-[#767676] font-sans text-[12px] lg:text-[16px] font-normal my-[30px]">
+                      $10.00 - $19.99
+                    </li>
+                    <li className="text-[#767676] font-sans text-[12px] lg:text-[16px] font-normal my-[30px]">
+                      $20.00 - $29.99
+                    </li>
+                    <li className="text-[#767676] font-sans text-[12px] lg:text-[16px] font-normal my-[30px]">
+                      $30.00 - $39.99
+                    </li>
+                    <li className="text-[#767676] font-sans text-[12px] lg:text-[16px] font-normal my-[30px]">
+                      $40.00 - $69.99
+                    </li>
+                  </div>
+                )}
               </ul>
             </div>
-            <div className="lg:w-9/12">
+            <div className="w-full lg:w-9/12">
               <div className="lg:flex justify-between items-center mb-[60]">
-                <div className="flex justify-end gap-[20px]">
+                <div className="flex lg:justify-end gap-[20px]">
                   <div className="w-[36px] h-[36px] flex justify-center items-center border border-[#F0F0F0] text-[#767676] hover:bg-[#262626] hover:text-white transition duration-500 ease-in-out cursor-pointer">
                     <IoGrid className="w-[20px] h-[20px]" />
                   </div>
@@ -195,15 +205,13 @@ const Product = () => {
                     </select>
                   </div>
                   <div className="ml-[40px] mr-[17px]">Show:</div>
-                  <div className="">
-                    <select className="lg:w-[139px] h-[36px] px-[10px] py-[3px] border-[1px] border-solid border-[#F0F0F0] bg-transparent">
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                      <option>5</option>
-                    </select>
-                  </div>
+                  <select className="lg:w-[139px] h-[36px] px-[10px] py-[3px] border-[1px] border-solid border-[#F0F0F0] bg-transparent">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                  </select>
                 </div>
               </div>
               <div className="flex justify-between flex-wrap mt-[60px]">
@@ -222,7 +230,7 @@ const Product = () => {
                 />
               </div>
             </div>
-          </Flex>
+          </div>
         </Container>
       </section>
     </>
