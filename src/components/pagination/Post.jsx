@@ -166,7 +166,7 @@ const Post = ({ allData, categorySearchFilter, multiList }) => {
                       <div className="relative">
                         {item.discountPercentage >= 0.4 && (
                           <div className="absolute top-0 left-0 lg:w-[92px] lg:h-[36px] px-[8px] lg:px-0 lg:leading-[36px] bg-[#262626] text-[#fff] font-sans text-xs lg:text-[16px] font-bold text-center">
-                            {item.discountPercentage.toFixed(0)}%
+                            -{item.discountPercentage.toFixed(0)}%
                           </div>
                         )}
 
