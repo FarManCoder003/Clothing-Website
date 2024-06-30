@@ -178,10 +178,10 @@ const ProductDetails = () => {
               ({singleData.reviews?.length || 0}) review for Product
             </div>
           </div>
-          <div className="w-full">
+          <div className="w-full border-t-[1px] border-[#F0F0F0]">
             {singleData.reviews?.map((review, index) => (
               <div className="">
-                <Flex className="items-center justify-between border-t-[1px] border-[#F0F0F0] pt-[23px] pb-[14px]">
+                <Flex className="items-center justify-between pt-[23px] pb-[14px]">
                   <Flex className="items-center gap-[27px]">
                     <div className="text-[#262626] font-sans font-normal text-[16px]">
                       {review.reviewerName}

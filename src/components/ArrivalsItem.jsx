@@ -3,13 +3,10 @@ import { TfiReload } from "react-icons/tfi";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCart } from "./slice/productSlice";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 const ArrivalsItem = ({ item }) => {
   let dispatch = useDispatch();
   let handleCart = (item) => {
-    toast("Added to cart");
     dispatch(addToCart({ ...item, qun: 1 }));
   };
   return (
@@ -51,18 +48,6 @@ const ArrivalsItem = ({ item }) => {
           </div>
         </Link>
       </div>
-      <ToastContainer
-        position="top-right"
-        autoClose={800}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
     </>
   );
 };
