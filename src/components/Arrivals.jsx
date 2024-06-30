@@ -4,7 +4,6 @@ import ArrivalsItem from "./ArrivalsItem";
 import Container from "./Container";
 import Slider from "react-slick";
 import { FaCircleArrowRight, FaCircleArrowLeft } from "react-icons/fa6";
-import { Link } from "react-router-dom";
 
 function SampleNextArrow(props) {
   const { onClick } = props;
@@ -57,9 +56,7 @@ const Arrivals = () => {
         </h2>
         <Slider className="w-full lg:h-[400px] lg:my-5" {...settings}>
           {data.map((item) => (
-            <Link to="/shop">
-              <ArrivalsItem item={item} />
-            </Link>
+            <ArrivalsItem item={item} />
           ))}
         </Slider>
       </Container>

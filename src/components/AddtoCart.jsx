@@ -6,12 +6,12 @@ import {
   productIncrement,
   productDecrement,
   removeProduct,
-} from "../components/slice/productSlice";
+} from "./slice/productSlice";
 import { RxCross2 } from "react-icons/rx";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const AddtoCart = () => {
+const AddToCart = () => {
   let dispatch = useDispatch();
   let navigate = useNavigate();
   let data = useSelector((state) => state.product.cartItem);
@@ -185,4 +185,4 @@ const AddtoCart = () => {
   );
 };
 
-export default AddtoCart;
+export default AddToCart;

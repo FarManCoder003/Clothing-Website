@@ -18,6 +18,7 @@ const Product = () => {
   let [category, setCategory] = useState([]);
   let [categorySearchFilter, setCategorySearchFilter] = useState([]);
   let pageNumber = [];
+  let [multiList, setMultiList] = useState("");
   for (
     let i = 0;
     i <
@@ -57,6 +58,10 @@ const Product = () => {
   let [showColor, setShowColor] = useState(false);
   let [showBrand, setShowBrand] = useState(false);
   let [showPrice, setShowPrice] = useState(false);
+
+  let handleList = () => {
+    setMultiList("activeList");
+  };
 
   return (
     <>
@@ -186,10 +191,24 @@ const Product = () => {
             <div className="w-full lg:w-9/12">
               <div className="lg:flex justify-between items-center mb-[60]">
                 <div className="flex lg:justify-end gap-[20px]">
-                  <div className="w-[36px] h-[36px] flex justify-center items-center border border-[#F0F0F0] text-[#767676] hover:bg-[#262626] hover:text-white transition duration-500 ease-in-out cursor-pointer">
+                  <div
+                    onClick={() => setMultiList("")}
+                    className={`w-[36px] h-[36px] flex justify-center items-center border border-[#F0F0F0] transition duration-500 ease-in-out cursor-pointer ${
+                      multiList == "activeList"
+                        ? "bg-white text-[#767676]"
+                        : "bg-[#262626] text-white"
+                    }`}
+                  >
                     <IoGrid className="w-[20px] h-[20px]" />
                   </div>
-                  <div className="w-[36px] h-[36px] flex justify-center items-center border border-[#F0F0F0] text-[#767676] hover:bg-[#262626] hover:text-white transition duration-500 ease-in-out cursor-pointer">
+                  <div
+                    onClick={handleList}
+                    className={`w-[36px] h-[36px] flex justify-center items-center border border-[#F0F0F0] transition duration-500 ease-in-out cursor-pointer ${
+                      multiList == ""
+                        ? "bg-white text-[#767676]"
+                        : "bg-[#262626] text-white"
+                    }`}
+                  >
                     <RiListCheck className="w-[20px] h-[20px]" />
                   </div>
                 </div>
@@ -218,6 +237,7 @@ const Product = () => {
                 <Post
                   allData={allData}
                   categorySearchFilter={categorySearchFilter}
+                  multiList={multiList}
                 />
               </div>
               <div className="">

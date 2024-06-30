@@ -28,7 +28,7 @@ const ProductDetails = () => {
   useEffect(() => {
     getData();
   }, []);
-  let clientRating = Array.from({ length: 5 }, (_, index) => {
+  let Rating = Array.from({ length: 5 }, (_, index) => {
     let ratingNumber = index + 0.5;
     return singleData.rating >= index + 1 ? (
       <FaStar className="text-[#FFD881]" />
@@ -38,6 +38,18 @@ const ProductDetails = () => {
       <FaRegStar className="text-[#FFD881]" />
     );
   });
+  const clientRating = (rating) => {
+    return Array.from({ length: 5 }, (_, index) => {
+      let ratingNumber = index + 0.5;
+      return rating >= index + 1 ? (
+        <FaStar key={index} className="text-[#FFD881]" />
+      ) : rating > ratingNumber ? (
+        <FaRegStarHalfStroke key={index} className="text-[#FFD881]" />
+      ) : (
+        <FaRegStar key={index} className="text-[#FFD881]" />
+      );
+    });
+  };
   let handleAddToCart = (item) => {
     dispatch(addToCart({ ...item, qun: 1 }));
   };
@@ -49,6 +61,23 @@ const ProductDetails = () => {
   };
   let handleWishList = () => {
     toast("Added to Wish List");
+  };
+
+  let discountedPrice = (item) => {
+    let price = item.price + item.price * (item.discountPercentage / 100);
+    return price;
+  };
+
+  const formatDateToRelative = (dateString) => {
+    const currentDate = new Date();
+    const reviewDate = new Date(dateString);
+
+    const diffMonths =
+      currentDate.getMonth() -
+      reviewDate.getMonth() +
+      12 * (currentDate.getFullYear() - reviewDate.getFullYear());
+
+    return `${diffMonths} months ago`;
   };
 
   return (
@@ -67,11 +96,13 @@ const ProductDetails = () => {
               {singleData.title}
             </div>
             <div className="flex items-center text-[#767676] font-sans text-[14px] font-normal">
-              {clientRating} <span className="ml-[12px]">Review</span>
+              {Rating} <span className="ml-[12px]">Review</span>
             </div>
             <Flex className="gap-x-[10px] lg:gap-x-[15px] items-center my-[21px]">
               <div className="text-[#767676] font-sans text-[14px] lg:text-[16px] font-normal">
-                <del>${singleData.discountPercentage}</del>
+                {singleData.discountPercentage > 0.9 && (
+                  <del>${discountedPrice(singleData).toFixed(2)}</del>
+                )}
               </div>
               <div className="text-[#262626] font-sans text-[18px] lg:text-[20px] font-bold">
                 ${singleData.price}
@@ -140,72 +171,35 @@ const ProductDetails = () => {
                 Description
               </div>
               <div className="text-[#262626] font-sans font-bold text-[20px]">
-                Reviews (1)
+                Reviews ({singleData.reviews?.length || 0})
               </div>
             </Flex>
             <div className="text-[#767676] font-sans font-normal text-[14px] mb-[16px]">
-              1 review for Product
+              ({singleData.reviews?.length || 0}) review for Product
             </div>
           </div>
           <div className="w-full">
-            <Flex className="items-center justify-between border-t-[1px] border-[#F0F0F0] pt-[23px] pb-[14px]">
-              <Flex className="items-center gap-[37px]">
-                <div className="text-[#262626 font-sans font-normal text-[16px]">
-                  John Ford
+            {singleData.reviews?.map((review, index) => (
+              <div className="">
+                <Flex className="items-center justify-between border-t-[1px] border-[#F0F0F0] pt-[23px] pb-[14px]">
+                  <Flex className="items-center gap-[27px]">
+                    <div className="text-[#262626] font-sans font-normal text-[16px]">
+                      {review.reviewerName}
+                    </div>
+                    <div className="flex gap-x-[5px]">
+                      {clientRating(review.rating)}
+                    </div>
+                  </Flex>
+                  <div className="text-[#767676] font-sans font-normal text-[16px]">
+                    {formatDateToRelative(review.date)}
+                  </div>
+                </Flex>
+
+                <div className="text-[#767676] font-sans font-normal text-[16px] pb-[15px] border-[#F0F0F0] border-b-[1px] mb-[5px]">
+                  {review.comment}
                 </div>
-                <div>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="70"
-                    height="12"
-                    viewBox="0 0 70 12"
-                    fill="none"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M63.2014 9.81534L59.3916 11.7586L60.0573 7.5245L57.0371 4.49139L61.2582 3.81783L63.2014 0L65.1445 3.81783L69.3656 4.49139L66.3455 7.5245L67.0111 11.7586L63.2014 9.81534Z"
-                      fill="#FFD881"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M48.9416 9.81534L45.1319 11.7586L45.7975 7.5245L42.7773 4.49139L46.9984 3.81783L48.9416 0L50.8848 3.81783L55.1059 4.49139L52.0857 7.5245L52.7513 11.7586L48.9416 9.81534Z"
-                      fill="#FFD881"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M34.6828 9.81534L30.8731 11.7586L31.5387 7.5245L28.5186 4.49139L32.7397 3.81783L34.6828 0L36.626 3.81783L40.8471 4.49139L37.8269 7.5245L38.4925 11.7586L34.6828 9.81534Z"
-                      fill="#FFD881"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M20.423 9.81534L16.6133 11.7586L17.279 7.5245L14.2588 4.49139L18.4799 3.81783L20.423 0L22.3662 3.81783L26.5873 4.49139L23.5671 7.5245L24.2328 11.7586L20.423 9.81534Z"
-                      fill="#FFD881"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M6.16426 9.81534L2.35454 11.7586L3.02016 7.5245L0 4.49139L4.2211 3.81783L6.16426 0L8.10741 3.81783L12.3285 4.49139L9.30835 7.5245L9.97397 11.7586L6.16426 9.81534Z"
-                      fill="#FFD881"
-                    />
-                  </svg>
-                </div>
-              </Flex>
-              <div className="text-[#767676] font-sans font-normal text-[16px]">
-                6 months ago
               </div>
-            </Flex>
-            <div className="text-[#767676] font-sans font-normal text-[16px] pb-[15px] border-[#F0F0F0] border-b-[1px] mb-[5px]">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged.
-            </div>
+            ))}
           </div>
           <div className="lg:w-1/2">
             <div className="text-[#262626] font-sans font-bold text-[20px]  my-[48px]">

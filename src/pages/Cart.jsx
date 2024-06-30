@@ -1,4 +1,4 @@
-import AddtoCart from "../components/AddtoCart";
+import AddToCart from "../components/AddToCart";
 import { useEffect } from "react";
 
 const Cart = () => {
@@ -8,7 +8,7 @@ const Cart = () => {
   return (
     <>
       <div className="lg:pt-[130px]">
-        <AddtoCart />
+        <AddToCart />
       </div>
     </>
   );
