@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { FaCartPlus, FaSearch, FaUser } from "react-icons/fa";
 import { FaBars } from "react-icons/fa6";
 import { MdArrowDropDown } from "react-icons/md";
@@ -7,15 +7,22 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Container from "./Container";
 import Flex from "./Flex";
+import { apiData } from "./ContextApi";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+  let info = useContext(apiData);
   let data = useSelector((state) => state.product.cartItem);
   let [cartShow, setCartShow] = useState(false);
   let [userCartShow, setUserCartShow] = useState(false);
   let [userShow, setUserShow] = useState(false);
+  let [searchInput, setSearchInput] = useState("");
+  let [searchFilter, setSearchFilter] = useState([]);
+  let [selectedItemIndex, setSelectedItemIndex] = useState(-1);
   let cartRef = useRef();
   let userRef = useRef();
   let userAccRef = useRef();
+  let navigate = useNavigate();
 
   useEffect(() => {
     document.addEventListener("click", (e) => {
@@ -45,11 +52,59 @@ const Navbar = () => {
     return total.toFixed(2);
   };
 
+  let handleInput = (e) => {
+    setSearchInput(e.target.value);
+    if (e.target.value === "") {
+      setSearchFilter([]);
+    } else {
+      let searchOne = info.filter((item) =>
+        item.title.toLowerCase().includes(e.target.value)
+      );
+      setSearchFilter(searchOne);
+    }
+  };
+
+  let handleSingleSearch = (id) => {
+    navigate(`/shop/${id}`);
+    setSearchFilter([]);
+    setSearchInput("");
+  };
+
+  let handleKey = (e) => {
+    switch (e.key) {
+      case "ArrowUp":
+        setSelectedItemIndex((prevIndex) => Math.max(prevIndex - 1, 0));
+        break;
+      case "ArrowDown":
+        setSelectedItemIndex((prevIndex) =>
+          Math.min(prevIndex + 1, searchFilter.length - 1)
+        );
+        break;
+      case "Enter":
+        if (selectedItemIndex !== -1) {
+          handleSingleSearch(searchFilter[selectedItemIndex].id);
+        }
+        break;
+      default:
+    }
+    if (selectedItemIndex !== -1) {
+      const selectedItemElement = document.getElementById(
+        `searchItem-${selectedItemIndex}`
+      );
+      if (selectedItemElement) {
+        selectedItemElement.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+        });
+      }
+    }
+  };
+
   return (
     <nav className="lg:fixed z-[999] w-[100%] bg-[#F5F5F3] py-4 pt-[55px] lg:pt-[64px]">
       <Container>
         <Flex className="items-center">
-          <div className="w-[30%] relative cursor-pointer">
+          <div className="w-[20%] lg:w-[30%] relative cursor-pointer">
             <div ref={cartRef} className="flex items-center gap-x-3">
               <FaBars />
               <p className="font-sans hidden lg:block text-[16px] lg:text-[#767676] text-[white] hover:text-[#262626]">
@@ -81,19 +136,48 @@ const Navbar = () => {
               </div>
             )}
           </div>
-          <div className="w-[40%]">
+          <div className="w-[60%] lg:w-[40%]">
             <div className="relative">
               <input
+                value={searchInput}
+                onKeyUp={handleKey}
+                onChange={handleInput}
                 placeholder="Search"
-                type="search"
                 className="w-full h-6 lg:h-[50px] font-sans font-normal text-[#C4C4C4] text-[14px]  outline-none px-2"
               />
               <div className="absolute text-sm lg:text-[14px] top-[50%] lg:right-4 right-2 translate-y-[-50%]">
                 <FaSearch />
               </div>
+              {searchFilter.length > 0 && (
+                <div className="w-[100%] max-h-[380px] overflow-y-auto z-50 absolute bg-[#F5F5F3] top-[50px] left-0">
+                  {searchFilter.map((item, index) => (
+                    <div
+                      key={item.id}
+                      id={`searchItem-${index}`}
+                      className={`py-3 cursor-pointer ${
+                        index === selectedItemIndex ? "bg-gray-200" : ""
+                      }`}
+                      onClick={() => handleSingleSearch(item.id)}
+                    >
+                      <div className="flex gap-x-[20px] items-center">
+                        <div className="">
+                          <img
+                            className="w-[20px] h-[20px] lg:w-[100px] lg:h-[100px]"
+                            src={item.thumbnail}
+                            alt={item.title}
+                          />
+                        </div>
+                        <div className="font-sans text-xs lg:text-[16px] font-normal text-[#262626]">
+                          <h3>{item.title}</h3>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
-          <div className="w-[30%] relative ">
+          <div className="w-[20%] lg:w-[30%] relative ">
             <div className="flex justify-end items-center gap-x-2 cursor-pointer">
               <div className="flex" ref={userAccRef}>
                 <FaUser />
