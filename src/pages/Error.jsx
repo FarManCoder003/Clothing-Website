@@ -85,7 +85,7 @@ const Error = () => {
                 <FaSearch />
               </div>
               {searchFilter.length > 0 && (
-                <div className="w-[100%] max-h-[380px] overflow-y-auto z-50 absolute bg-[#F5F5F3] top-[30px] lg:top-[50px] left-0">
+                <div className="w-[100%] max-h-[380px] overflow-y-auto z-50 absolute bg-[#F5F5F3] top-[50px] left-0">
                   {searchFilter.map((item, index) => (
                     <div
                       key={item.id}
@@ -98,7 +98,7 @@ const Error = () => {
                       <div className="flex gap-x-[20px] items-center">
                         <div className="">
                           <img
-                            className="w-[20px] h-[20px] lg:w-[100px] lg:h-[100px]"
+                            className="w-[35px] h-[35px] lg:w-[100px] lg:h-[100px]"
                             src={item.thumbnail}
                             alt={item.title}
                           />
