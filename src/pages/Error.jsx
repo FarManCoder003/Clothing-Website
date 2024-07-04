@@ -67,7 +67,7 @@ const Error = () => {
               removed or you misspelled the word while searching for it. Maybe
               try a search?
             </div>
-            <div className="flex items-center my-[50px] px-[21px] w-[100%] h-[71px] border border-[#F0F0F0]">
+            <div className="relative flex items-center my-[50px] px-[21px] w-[100%] h-[71px] border border-[#F0F0F0]">
                 <input
                 value={searchInput}
                 onKeyUp={handleKey}
