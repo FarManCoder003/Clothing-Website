@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import Container from "../components/Container";
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
 
 const Error = () => {
   let info = useContext(apiData);
