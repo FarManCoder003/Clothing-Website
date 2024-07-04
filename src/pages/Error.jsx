@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import Container from "../components/Container";
 import { useEffect, useContext, useState} from "react";
 import { apiData } from "../components/ContextApi";
+import { FaSearch } from "react-icons/fa";
 
 const Error = () => {
   let info = useContext(apiData);
