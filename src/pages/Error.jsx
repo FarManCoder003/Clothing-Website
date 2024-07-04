@@ -3,6 +3,10 @@ import Container from "../components/Container";
 import { useEffect } from "react";
 
 const Error = () => {
+  let info = useContext(apiData);
+  let [searchInput, setSearchInput] = useState("");
+  let [searchFilter, setSearchFilter] = useState([]);
+  let [selectedItemIndex, setSelectedItemIndex] = useState(-1);
   useEffect(() => {
     window.scrollTo({ top: 0 });
   });
