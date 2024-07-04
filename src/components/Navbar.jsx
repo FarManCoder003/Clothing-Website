@@ -149,7 +149,7 @@ const Navbar = () => {
                 <FaSearch />
               </div>
               {searchFilter.length > 0 && (
-                <div className="w-[100%] max-h-[380px] overflow-y-auto z-50 absolute bg-[#F5F5F3] top-[50px] left-0">
+                <div className="w-[100%] max-h-[380px] overflow-y-auto z-50 absolute bg-[#F5F5F3] top-[30px] lg:top-[50px] left-0">
                   {searchFilter.map((item, index) => (
                     <div
                       key={item.id}
