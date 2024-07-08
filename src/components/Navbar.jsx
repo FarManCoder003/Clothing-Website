@@ -203,10 +203,14 @@ const Navbar = () => {
                     My Account
                   </li>
                   <li className="py-[16px] duration-300 ease-in-out hover:text-[#fff] hover:pl-[10px]">
+                    <Link to="/login">
                     Log in
+                    </Link>
                   </li>
                   <li className="py-[16px] duration-300 ease-in-out hover:text-[#fff] hover:pl-[10px]">
+                    <Link to="/signUp">
                     Sign Up
+                    </Link>
                   </li>
                 </ul>
               </div>

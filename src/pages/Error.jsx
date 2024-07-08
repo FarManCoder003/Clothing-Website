@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import Container from "../components/Container";
-import { useEffect, useContext, useState} from "react";
+import { useContext, useState } from "react";
 import { apiData } from "../components/ContextApi";
 import { FaSearch } from "react-icons/fa";
 
@@ -9,10 +9,7 @@ const Error = () => {
   let [searchInput, setSearchInput] = useState("");
   let [searchFilter, setSearchFilter] = useState([]);
   let [selectedItemIndex, setSelectedItemIndex] = useState(-1);
-  useEffect(() => {
-    window.scrollTo({ top: 0 });
-  });
-  
+
   let handleInput = (e) => {
     setSearchInput(e.target.value);
     if (e.target.value === "") {
@@ -74,7 +71,7 @@ const Error = () => {
               try a search?
             </div>
             <div className="relative flex items-center my-[50px] px-[21px] w-[100%] h-[71px] border border-[#F0F0F0]">
-                <input
+              <input
                 value={searchInput}
                 onKeyUp={handleKey}
                 onChange={handleInput}
