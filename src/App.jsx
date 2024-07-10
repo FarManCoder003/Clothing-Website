@@ -15,6 +15,7 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import SignUp from "./pages/SignUp";
 import LogIn from "./pages/LogIn";
+import Account from "./pages/Account";
 
 let router = createBrowserRouter(
   createRoutesFromElements(
@@ -28,6 +29,7 @@ let router = createBrowserRouter(
       <Route path="/contact" element={<Contact />}></Route>
       <Route path="/signUp" element={<SignUp />}></Route>
       <Route path="/login" element={<LogIn />}></Route>
+      <Route path="/account" element={<Account />}></Route>
       <Route path="*" element={<Error />}></Route>
     </Route>
   )

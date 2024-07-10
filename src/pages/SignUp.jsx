@@ -1,10 +1,63 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa6";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  updateProfile,
+} from "firebase/auth";
+import { getDatabase, ref, set } from "firebase/database";
 
 const SignUp = () => {
+  const auth = getAuth();
+  const db = getDatabase();
+  let navigate = useNavigate();
+  let [firstName, setFirstName] = useState("");
+  let [email, setEmail] = useState("");
+  let [password, setPassword] = useState("");
   let [passShow, setPassShow] = useState(false);
+  let handleFirstName = (e) => {
+    setFirstName(e.target.value);
+  };
+  let handleEmail = (e) => {
+    setEmail(e.target.value);
+  };
+
+  let handlePassword = (e) => {
+    setPassword(e.target.value);
+  };
+  let handleSubmit = (e) => {
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((user) => {})
+      .then(() => {
+        updateProfile(auth.currentUser, {
+          displayName: firstName,
+        });
+      })
+      .then(() => {
+        toast("Going to Login Page");
+        setEmail("");
+        setPassword("");
+        setTimeout(() => {
+          navigate("/login");
+        }, 2000);
+      })
+      .then(() => {
+        set(ref(db, "user/"), {
+          username: firstName,
+          email: email,
+        });
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode);
+        console.log(errorMessage);
+      });
+  };
 
   return (
     <section className="container mx-auto lg:px-0 px-4">
@@ -29,6 +82,7 @@ const SignUp = () => {
               First Name
             </div>
             <input
+              onChange={handleFirstName}
               className="text-[#767676] font-sans font-normal text-[14px] py-[15px] pl-[5px] w-full border-b border-[#F0F0F0] outline-none"
               type="text"
               placeholder="First Name"
@@ -51,8 +105,10 @@ const SignUp = () => {
               Email address
             </div>
             <input
+              onChange={handleEmail}
               className="text-[#767676] font-sans font-normal text-[14px] py-[15px] pl-[5px] w-full border-b border-[#F0F0F0] outline-none"
               type="email"
+              value={email}
               placeholder="company@domain.com"
             />
           </div>
@@ -150,6 +206,7 @@ const SignUp = () => {
             </div>
             <div className="relative">
               <input
+                onChange={handlePassword}
                 type={passShow ? "text" : "password"}
                 className="text-[#767676] font-sans font-normal text-[14px] py-[15px] pl-[5px] w-full border-b border-[#F0F0F0] outline-none"
                 placeholder="Password"
@@ -194,10 +251,23 @@ const SignUp = () => {
         </h3>
       </div>
       <button
+        onClick={handleSubmit}
         className="w-[200px] h-[50px] leading-[50px] hover:text-[#262626] text-[#fff] bg-[#262626] hover:bg-[#fff] duration-500 ease-in-out font-sans font-bold text-[14px] text-center mt-[30px] border border-[#2B2B2B] mb-[64px]"
       >
         Sign up
       </button>
+      <ToastContainer
+        position="top-right"
+        autoClose={800}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </section>
   );
 };

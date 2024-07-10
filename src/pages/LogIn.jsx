@@ -1,7 +1,42 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const LogIn = () => {
+  let [email, setEmail] = useState("");
+  let [password, setPassword] = useState("");
+  const auth = getAuth();
+  let navigate = useNavigate();
+
+  let handleEmail = (e) => {
+    setEmail(e.target.value);
+  };
+  let handlePassword = (e) => {
+    setPassword(e.target.value);
+  };
+
+  let handleSubmit = (e) => {
+    e.preventDefault();
+    signInWithEmailAndPassword(auth, email, password)
+      .then((user) => {
+        console.log("user", user);
+      })
+      .then(() => {
+        toast("Going to Accounts");
+        setTimeout(() => {
+          navigate("/account");
+        }, 2000);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode);
+        console.log(errorMessage);
+      });
+  };
+
   return (
     <>
       <section className="container mx-auto lg:px-0 px-4">
@@ -26,6 +61,7 @@ const LogIn = () => {
                 Email address
               </div>
               <input
+                onChange={handleEmail}
                 className="text-[#767676] font-sans font-normal text-[14px] py-[15px] pl-[5px] w-full border-b border-[#F0F0F0] outline-none"
                 type="email"
                 placeholder="company@domain.com"
@@ -36,13 +72,19 @@ const LogIn = () => {
                 Password
               </div>
               <input
+                name="password"
+                id="password"
+                onChange={handlePassword}
                 className="text-[#767676] font-sans font-normal text-[14px] py-[15px] pl-[5px] w-full border-b border-[#F0F0F0] outline-none"
                 type="password"
                 placeholder="••••••••"
               />
             </div>
           </div>
-          <button className="w-[200px] h-[50px] leading-[50px] text-[#262626] hover:text-[#fff] hover:bg-[#262626] duration-500 ease-in-out font-sans font-bold text-[14px] text-center mt-[30px] border border-[#2B2B2B]">
+          <button
+            onClick={handleSubmit}
+            className="w-[200px] h-[50px] leading-[50px] text-[#262626] hover:text-[#fff] hover:bg-[#262626] duration-500 ease-in-out font-sans font-bold text-[14px] text-center mt-[30px] border border-[#2B2B2B]"
+          >
             Log in
           </button>
         </div>
@@ -55,8 +97,20 @@ const LogIn = () => {
           since the.
         </div>
         <button className="w-[200px] h-[50px] leading-[50px] bg-[#262626] text-[#fff] hover:text-[#262626] hover:bg-[#fff] border border-[#262626] duration-500 ease-in-out font-sans font-bold text-[14px] text-center mt-[48px] mb-[120px]">
-          Continue
+          <Link to="/signUp">Sign up</Link>
         </button>
+        <ToastContainer
+          position="top-right"
+          autoClose={800}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
       </section>
     </>
   );
