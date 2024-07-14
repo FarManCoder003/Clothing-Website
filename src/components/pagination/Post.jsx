@@ -4,10 +4,8 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../slice/productSlice";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
-const Post = ({ allData, categorySearchFilter, multiList }) => {
+const Post = ({ allData, categorySearchFilter, multiList, filterPrice }) => {
   let [filterShow, setFilterShow] = useState([]);
   let [categoryShow, setCategoryShow] = useState(true);
   let dispatch = useDispatch();
@@ -29,7 +27,6 @@ const Post = ({ allData, categorySearchFilter, multiList }) => {
   };
 
   let handleCart = (item) => {
-    toast("Added to cart");
     dispatch(addToCart({ ...item, qun: 1 }));
   };
 
@@ -40,7 +37,112 @@ const Post = ({ allData, categorySearchFilter, multiList }) => {
 
   return (
     <>
-      {categorySearchFilter.length > 0
+      {filterPrice.length > 0
+        ? filterPrice.map((item) => (
+            <div
+              className={`${
+                multiList == "activeList"
+                  ? ""
+                  : "flex justify-between flex-wrap w-[48%] lg:w-[32%] lg:py-5"
+              }`}
+            >
+              <div className={`${multiList == "activeList" ? "lg:flex" : ""}`}>
+                <div className="relative group overflow-hidden">
+                  <Link to={`/shop/${item.id}`}>
+                    {multiList == "activeList" ? (
+                      <img
+                        src={item.thumbnail}
+                        className="lg:w-[350px] lg:h-[250px]"
+                        alt=""
+                      />
+                    ) : (
+                      <div className="relative">
+                        {item.discountPercentage >= 0.4 && (
+                          <div className="absolute top-0 left-0 lg:w-[92px] lg:h-[36px] px-[8px] lg:px-0 lg:leading-[36px] bg-[#262626] text-[#fff] font-sans text-xs lg:text-[16px] font-bold text-center">
+                            -{item.discountPercentage.toFixed(0)}%
+                          </div>
+                        )}
+
+                        <img
+                          src={item.thumbnail}
+                          className="w-[150px] h-[150px] lg:w-[350px] lg:h-[350px]"
+                          alt=""
+                        />
+                      </div>
+                    )}
+                  </Link>
+                  {multiList == "activeList" ? (
+                    ""
+                  ) : (
+                    <div className="bg-white absolute left-0 h-[50%] lg:h-[130px] duration-300 ease-in-out bottom-[-120px] w-full group-hover:bottom-[0px] flex items-center justify-end">
+                      <ul className="">
+                        <li className="flex items-center justify-end text-end gap-x-2 lg:gap-x-4 text-[#767676] font-sans text-[10px] lg:text-[16px] font-normal">
+                          Add to Wish List
+                          <FaHeart className="text-[#262626]" />
+                        </li>
+                        <li className="flex items-center justify-end gap-x-2 lg:gap-x-4 lg:py-2 text-[#767676] font-sans text-[10px] lg:text-[16px] font-normal">
+                          Compare <TfiReload className="text-[#262626]" />
+                        </li>
+                        <li
+                          onClick={() => handleCart(item)}
+                          className="flex items-center justify-end gap-x-2 lg:gap-x-4 text-[#262626] font-sans text-[10px] lg:text-[16px] font-bold cursor-pointer"
+                        >
+                          Add to Cart <FaShoppingCart />
+                        </li>
+                      </ul>
+                    </div>
+                  )}
+                </div>
+                <div
+                  className={`${
+                    multiList == "activeList"
+                      ? ""
+                      : "flex justify-between items-center py-3"
+                  }`}
+                >
+                  <Link to={`/shop/${item.id}`}>
+                    <h2
+                      className={`${
+                        multiList == "activeList"
+                          ? "lg:text-[28px] pt-[35px]"
+                          : "text-[#262626] font-sans text-xs lg:text-[18px] font-bold"
+                      }`}
+                    >
+                      {item.title}
+                    </h2>
+                  </Link>
+                  {multiList == "activeList" ? (
+                    <div className="">
+                      <Link to={`/shop/${item.id}`}>
+                        <div className="text-[#262626] font-sans font-semibold text-[14px]">
+                          {item.description}
+                        </div>
+                        <div className="flex items-center gap-[10px] pt-[15px]">
+                          <div className="text-[#767676] font-sans text-[14px] lg:text-[16px] font-normal">
+                            <del>${discountedPrice(item).toFixed(2)}</del>
+                          </div>
+                          <div className="text-[#262626] font-sans text-[18px] lg:text-[20px] font-bold">
+                            ${item.price}
+                          </div>
+                        </div>
+                      </Link>
+                      <div
+                        onClick={() => handleCart(item)}
+                        className="w-[100px] h-[40px] leading-[40px] text-center mt-[20px] bg-black text-white font-sans text-[14px] font-bold cursor-pointer"
+                      >
+                        Add to cart
+                      </div>
+                    </div>
+                  ) : (
+                    <p className="text-[#767676] font-sans text-xs lg:text-[14px] font-normal">
+                      ${item.price}
+                    </p>
+                  )}
+                </div>
+              </div>
+            </div>
+          ))
+        : categorySearchFilter.length > 0
         ? filterShow.map((item) => (
             <div
               className={`${
@@ -271,18 +373,6 @@ const Post = ({ allData, categorySearchFilter, multiList }) => {
           </button>
         </div>
       )}
-      <ToastContainer
-        position="top-right"
-        autoClose={800}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
     </>
   );
 };

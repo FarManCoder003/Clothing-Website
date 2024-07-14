@@ -19,6 +19,10 @@ const Product = () => {
   let [categorySearchFilter, setCategorySearchFilter] = useState([]);
   let pageNumber = [];
   let [multiList, setMultiList] = useState("");
+  let [lowPrice, setLowPrice] = useState("");
+  let [highPrice, setHighPrice] = useState("");
+  let [filterPrice, setFilterPrice] = useState([]);
+
   for (
     let i = 0;
     i <
@@ -38,6 +42,7 @@ const Product = () => {
   let handleSubcategory = (items) => {
     let categoryFilter = data.filter((item) => item.category == items);
     setCategorySearchFilter(categoryFilter);
+    setCurrentPage(1);
   };
   let paginate = (pageNumber) => {
     setCurrentPage(pageNumber + 1);
@@ -53,6 +58,16 @@ const Product = () => {
     if (currentPage < pageNumber.length) {
       setCurrentPage((state) => state + 1);
     }
+  };
+  let handlePrice = (value) => {
+    setLowPrice(value.low);
+    setHighPrice(value.high);
+    let priceFilter = data.filter(
+      (item) => item.price > value.low && item.price < value.high
+    );
+    priceFilter.sort((a, b) => a.price - b.price);
+    setFilterPrice(priceFilter);
+    setCurrentPage(1);
   };
   let [categoryShow, setCategoryShow] = useState(false);
   let [showColor, setShowColor] = useState(false);
@@ -169,20 +184,53 @@ const Product = () => {
                 </li>
                 {showPrice && (
                   <div className="">
-                    <li className="text-[#767676] font-sans text-[12px] lg:text-[16px] font-normal my-[20px]">
-                      $0.00 - $9.99
+                    <li
+                      onClick={() => handlePrice({ low: 0, high: 19.99 })}
+                      className="text-[#767676] font-sans text-[12px] lg:text-[16px] font-normal my-[20px] cursor-pointer"
+                    >
+                      $1 - $19.99
                     </li>
-                    <li className="text-[#767676] font-sans text-[12px] lg:text-[16px] font-normal my-[30px]">
-                      $10.00 - $19.99
+                    <li
+                      onClick={() => handlePrice({ low: 20, high: 49.99 })}
+                      className="text-[#767676] font-sans text-[12px] lg:text-[16px] font-normal my-[30px] cursor-pointer"
+                    >
+                      $20 - $49.99
                     </li>
-                    <li className="text-[#767676] font-sans text-[12px] lg:text-[16px] font-normal my-[30px]">
-                      $20.00 - $29.99
+                    <li
+                      onClick={() => handlePrice({ low: 50, high: 99.99 })}
+                      className="text-[#767676] font-sans text-[12px] lg:text-[16px] font-normal my-[30px] cursor-pointer"
+                    >
+                      $50 - $99.99
                     </li>
-                    <li className="text-[#767676] font-sans text-[12px] lg:text-[16px] font-normal my-[30px]">
-                      $30.00 - $39.99
+                    <li
+                      onClick={() => handlePrice({ low: 100, high: 499.99 })}
+                      className="text-[#767676] font-sans text-[12px] lg:text-[16px] font-normal my-[30px] cursor-pointer"
+                    >
+                      $100 - $499.99
                     </li>
-                    <li className="text-[#767676] font-sans text-[12px] lg:text-[16px] font-normal my-[30px]">
-                      $40.00 - $69.99
+                    <li
+                      onClick={() => handlePrice({ low: 500, high: 999.99 })}
+                      className="text-[#767676] font-sans text-[12px] lg:text-[16px] font-normal my-[30px] cursor-pointer"
+                    >
+                      $500 - $999.99
+                    </li>
+                    <li
+                      onClick={() => handlePrice({ low: 1000, high: 4999.99 })}
+                      className="text-[#767676] font-sans text-[12px] lg:text-[16px] font-normal my-[30px] cursor-pointer"
+                    >
+                      $1000 - $4999.99
+                    </li>
+                    <li
+                      onClick={() => handlePrice({ low: 5000, high: 9999.99 })}
+                      className="text-[#767676] font-sans text-[12px] lg:text-[16px] font-normal my-[30px] cursor-pointer"
+                    >
+                      $5000 - $9999.99
+                    </li>
+                    <li
+                      onClick={() => handlePrice({ low: 10000, high: 30000 })}
+                      className="text-[#767676] font-sans text-[12px] lg:text-[16px] font-normal my-[30px] cursor-pointer"
+                    >
+                      $10000 - $30000
                     </li>
                   </div>
                 )}
@@ -238,16 +286,21 @@ const Product = () => {
                   allData={allData}
                   categorySearchFilter={categorySearchFilter}
                   multiList={multiList}
+                  filterPrice={filterPrice}
                 />
               </div>
               <div className="">
-                <PaginationArea
-                  pageNumber={pageNumber}
-                  paginate={paginate}
-                  currentPage={currentPage}
-                  next={next}
-                  prev={prev}
-                />
+                {filterPrice.length === 0 && (
+                  <div className="">
+                    <PaginationArea
+                      pageNumber={pageNumber}
+                      paginate={paginate}
+                      currentPage={currentPage}
+                      next={next}
+                      prev={prev}
+                    />
+                  </div>
+                )}
               </div>
             </div>
           </div>

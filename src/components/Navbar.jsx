@@ -3,12 +3,15 @@ import { FaCartPlus, FaSearch, FaUser } from "react-icons/fa";
 import { FaBars } from "react-icons/fa6";
 import { MdArrowDropDown } from "react-icons/md";
 import { RxCross2 } from "react-icons/rx";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import Container from "./Container";
 import Flex from "./Flex";
 import { apiData } from "./ContextApi";
 import { useNavigate } from "react-router-dom";
+import { removeProduct } from "./slice/productSlice";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Navbar = () => {
   let info = useContext(apiData);
@@ -22,7 +25,9 @@ const Navbar = () => {
   let cartRef = useRef();
   let userRef = useRef();
   let userAccRef = useRef();
+  let userStay = useRef();
   let navigate = useNavigate();
+  let dispatch = useDispatch();
 
   useEffect(() => {
     document.addEventListener("click", (e) => {
@@ -40,6 +45,9 @@ const Navbar = () => {
         setUserShow(!userShow);
       } else {
         setUserShow(false);
+      }
+      if (userStay.current.contains(e.target)) {
+        setUserCartShow(true);
       }
     });
   }, [cartShow, userCartShow, userShow]);
@@ -98,6 +106,22 @@ const Navbar = () => {
         });
       }
     }
+  };
+  let handleDelete = (index) => {
+    dispatch(removeProduct(index));
+  };
+
+  let handleCart = () => {
+    toast("Cart page");
+    setTimeout(() => {
+      navigate("/cart");
+    }, 1000);
+  };
+  let handleCheckout = () => {
+    toast("Checking out");
+    setTimeout(() => {
+      navigate("/checkout");
+    }, 1000);
   };
 
   return (
@@ -177,7 +201,7 @@ const Navbar = () => {
               )}
             </div>
           </div>
-          <div className="w-[20%] lg:w-[30%] relative ">
+          <div className="w-[20%] lg:w-[30%] relative">
             <div className="flex justify-end items-center gap-x-2 cursor-pointer">
               <div className="flex" ref={userAccRef}>
                 <FaUser />
@@ -211,52 +235,73 @@ const Navbar = () => {
                 </ul>
               </div>
             )}
-            {userCartShow && data.length > 0 && (
-              <div className="w-[350px] z-50 absolute bg-[#F5F5F3] top-[30px] right-0">
-                <div className="p-4">
-                  {data.map((item) => (
-                    <div className="font-sans flex gap-x-3 items-center my-[10px]">
-                      <div>
-                        <img
-                          src={item.thumbnail}
-                          alt=""
-                          className="w-[40px] h-[40px]"
-                        />
-                      </div>
-                      <div className="font-sans">
-                        <h3>
-                          {item.title} x {item.qun}
-                        </h3>
-                        <h5>${(item.price * item.qun).toFixed(2)}</h5>
-                      </div>
-                      <div className="cursor-pointer ml-auto">
-                        <RxCross2 />
-                      </div>
+            <div ref={userStay} className="">
+              {userCartShow && data.length > 0 && (
+                <div className="w-[350px] z-50 absolute bg-[#F5F5F3] top-[30px] right-0">
+                  <div className="p-4">
+                    <div className="max-h-[350px] overflow-y-auto">
+                      {data.map((item, index) => (
+                        <div className="font-sans flex gap-x-3 items-center my-[10px]">
+                          <div>
+                            <img
+                              src={item.thumbnail}
+                              alt=""
+                              className="w-[40px] h-[40px]"
+                            />
+                          </div>
+                          <div className="font-sans">
+                            <h3>
+                              {item.title} x {item.qun}
+                            </h3>
+                            <h5>${(item.price * item.qun).toFixed(2)}</h5>
+                          </div>
+                          <div
+                            onClick={() => handleDelete(index)}
+                            className="cursor-pointer ml-auto"
+                          >
+                            <RxCross2 />
+                          </div>
+                        </div>
+                      ))}
                     </div>
-                  ))}
-                  <div className="">
-                    <h3 className="pl-4 py-3">
-                      Subtotal: <span>${productTotal()}</span>
-                    </h3>
-                    <div className="flex justify-around gap-3">
-                      <Link to="/cart">
-                        <a className="w-[148px] h-[50px] border-[1px] border-[#262626] inline-block text-center leading-[50px] hover:bg-[#262626] hover:text-[#FFF] duration-500 ease-in-out">
+                    <div className="">
+                      <h3 className="pl-4 py-3">
+                        Subtotal: <span>${productTotal()}</span>
+                      </h3>
+                      <div className="flex justify-around gap-3">
+                        <a
+                          onClick={handleCart}
+                          className="w-[148px] h-[50px] border-[1px] border-[#262626] inline-block text-center leading-[50px] hover:bg-[#262626] hover:text-[#FFF] duration-500 ease-in-out cursor-pointer"
+                        >
                           View Cart
                         </a>
-                      </Link>
-                      <Link to="/CheckOut">
-                        <a className="w-[148px] h-[50px] border-[1px] border-[#262626] inline-block text-center leading-[50px] hover:bg-[#262626] hover:text-[#FFF] duration-500 ease-in-out">
+                        <a
+                          onClick={handleCheckout}
+                          className="w-[148px] h-[50px] border-[1px] border-[#262626] inline-block text-center leading-[50px] hover:bg-[#262626] hover:text-[#FFF] duration-500 ease-in-out cursor-pointer"
+                        >
                           Checkout
                         </a>
-                      </Link>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            )}
+              )}
+            </div>
           </div>
         </Flex>
       </Container>
+      <ToastContainer
+        position="top-right"
+        autoClose={800}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </nav>
   );
 };
