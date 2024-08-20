@@ -94,15 +94,6 @@ const CheckOut = () => {
           </div>
           <div className="">
             <div className="text-[#262626] font-sans font-bold text-sm lg:text-[16px]">
-              County (optional)
-            </div>
-            <input
-              className="w-full text-[#767676] font-sans font-bold text-[14px] pt-[10px] pb-[16px] border-b border-[#F0F0F0] mt-[10px] mb-[24px] outline-none"
-              placeholder="County"
-            />
-          </div>
-          <div className="">
-            <div className="text-[#262626] font-sans font-bold text-sm lg:text-[16px]">
               Post Code *
             </div>
             <input

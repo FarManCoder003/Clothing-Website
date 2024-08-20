@@ -16,16 +16,39 @@ const SignUp = () => {
   const db = getDatabase();
   let navigate = useNavigate();
   let [firstName, setFirstName] = useState("");
+  let [lastName, setLastName] = useState("");
+  let [phone, setPhone] = useState("");
+  let [country, setCountry] = useState("");
+  let [streetAddress, setStreetAddress] = useState("");
+  let [city, setCity] = useState("");
+  let [postCode, setPostCode] = useState("");
   let [email, setEmail] = useState("");
   let [password, setPassword] = useState("");
   let [passShow, setPassShow] = useState(false);
   let handleFirstName = (e) => {
     setFirstName(e.target.value);
   };
+  let handleLastName = (e) => {
+    setLastName(e.target.value);
+  };
+  let handlePhone = (e) => {
+    setPhone(e.target.value);
+  };
+  let handleCountry = (e) => {
+    setCountry(e.target.value);
+  };
+  let handleStreetAddress = (e) => {
+    setStreetAddress(e.target.value);
+  };
+  let handleCity = (e) => {
+    setCity(e.target.value);
+  };
+  let handlePostCode = (e) => {
+    setPostCode(e.target.value);
+  };
   let handleEmail = (e) => {
     setEmail(e.target.value);
   };
-
   let handlePassword = (e) => {
     setPassword(e.target.value);
   };
@@ -47,8 +70,14 @@ const SignUp = () => {
       })
       .then(() => {
         set(ref(db, "user/"), {
-          username: firstName,
+          firstName: firstName,
+          lastName: lastName,
           email: email,
+          city:city,
+          streetAddress:streetAddress,
+          country:country,
+          phone:phone,
+          postCode:postCode,
         });
       })
       .catch((error) => {
@@ -93,6 +122,7 @@ const SignUp = () => {
               Last Name
             </div>
             <input
+              onChange={handleLastName}
               className="text-[#767676] font-sans font-normal text-[14px] py-[15px] pl-[5px] w-full border-b border-[#F0F0F0] outline-none"
               type="text"
               placeholder="Last Name"
@@ -117,6 +147,7 @@ const SignUp = () => {
               Telephone
             </div>
             <input
+              onChange={handlePhone}
               className="text-[#767676] font-sans font-normal text-[14px] py-[15px] pl-[5px] w-full border-b border-[#F0F0F0] outline-none"
               type="tel"
               placeholder="Your phone number"
@@ -131,31 +162,34 @@ const SignUp = () => {
         <div className="lg:flex justify-between">
           <div className="lg:w-[33%]">
             <div className="text-[#262626] font-sans font-bold text-[16px]">
-              Address 1
+              Country
             </div>
             <input
+              onChange={handleCountry}
               className="text-[#767676] font-sans font-normal text-[14px] py-[15px] pl-[5px] w-full border-b border-[#F0F0F0] outline-none"
               type="text"
-              placeholder="Address"
+              placeholder="Country"
             />
           </div>
           <div className="lg:w-[65%]">
             <div className="text-[#262626] font-sans font-bold text-[16px] pt-5 lg:pt-0">
-              Address 2
+              Street Address
             </div>
             <input
+              onChange={handleStreetAddress}
               className="text-[#767676] font-sans font-normal text-[14px] py-[15px] pl-[5px] w-full border-b border-[#F0F0F0] outline-none"
               type="text"
-              placeholder="Address"
+              placeholder="Street Address"
             />
           </div>
         </div>
-        <div className="lg:flex justify-between pt-[24px]">
+        <div className="lg:flex justify-between py-[24px]">
           <div className="lg:w-[33%]">
             <div className="text-[#262626] font-sans font-bold text-[16px]">
               City
             </div>
             <input
+              onChange={handleCity}
               className="text-[#767676] font-sans font-normal text-[14px] py-[15px] pl-[5px] w-full border-b border-[#F0F0F0] outline-none"
               type="text"
               placeholder="Your city"
@@ -166,31 +200,10 @@ const SignUp = () => {
               Post Code
             </div>
             <input
+              onChange={handlePostCode}
               className="text-[#767676] font-sans font-normal text-[14px] py-[15px] pl-[5px] w-full border-b border-[#F0F0F0] outline-none"
               type="text"
-              placeholder="00000"
-            />
-          </div>
-        </div>
-        <div className="lg:flex justify-between pt-[24px]">
-          <div className="lg:w-[33%]">
-            <div className="text-[#262626] font-sans font-bold text-[16px]">
-              Division
-            </div>
-            <input
-              className="text-[#767676] font-sans font-normal text-[14px] py-[15px] pl-[5px] w-full border-b border-[#F0F0F0] outline-none"
-              type="text"
-              placeholder="Please select"
-            />
-          </div>
-          <div className="lg:w-[65%]">
-            <div className="text-[#262626] font-sans font-bold text-[16px] pt-5 lg:pt-0">
-              District
-            </div>
-            <input
-              className="text-[#767676] font-sans font-normal text-[14px] py-[15px] pl-[5px] w-full border-b border-[#F0F0F0] outline-none"
-              type="text"
-              placeholder="Please select"
+              placeholder="Enter valid post code"
             />
           </div>
         </div>

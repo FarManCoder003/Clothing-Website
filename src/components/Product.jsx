@@ -22,6 +22,7 @@ const Product = () => {
   let [lowPrice, setLowPrice] = useState("");
   let [highPrice, setHighPrice] = useState("");
   let [filterPrice, setFilterPrice] = useState([]);
+  let [responsiveView, setResponsiveView] = useState(true);
 
   for (
     let i = 0;
@@ -77,6 +78,22 @@ const Product = () => {
   let handleList = () => {
     setMultiList("activeList");
   };
+
+  let handleShowData = (e) => {
+    setPerPage(e.target.value);
+  };
+
+  useEffect(() => {
+    function responsiveViews() {
+      if (window.innerWidth < 1024) {
+        setResponsiveView(false);
+      } else {
+        setResponsiveView(true);
+      }
+    }
+    responsiveViews();
+    window.addEventListener("resize", responsiveViews);
+  }, []);
 
   return (
     <>
@@ -272,12 +289,13 @@ const Product = () => {
                     </select>
                   </div>
                   <div className="ml-[40px] mr-[17px]">Show:</div>
-                  <select className="lg:w-[139px] h-[36px] px-[10px] py-[3px] border-[1px] border-solid border-[#F0F0F0] bg-transparent">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                  <select
+                    onChange={handleShowData}
+                    className="lg:w-[139px] h-[36px] px-[10px] py-[3px] border-[1px] border-solid border-[#F0F0F0] bg-transparent"
+                  >
+                    <option value="9">9</option>
+                    <option value="12">12</option>
+                    <option value="15">15</option>
                   </select>
                 </div>
               </div>
@@ -298,6 +316,7 @@ const Product = () => {
                       currentPage={currentPage}
                       next={next}
                       prev={prev}
+                      responsiveView={responsiveView}
                     />
                   </div>
                 )}
