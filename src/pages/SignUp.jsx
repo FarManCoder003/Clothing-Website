@@ -73,11 +73,11 @@ const SignUp = () => {
           firstName: firstName,
           lastName: lastName,
           email: email,
-          city:city,
-          streetAddress:streetAddress,
-          country:country,
-          phone:phone,
-          postCode:postCode,
+          city: city,
+          streetAddress: streetAddress,
+          country: country,
+          phone: phone,
+          postCode: postCode,
         });
       })
       .catch((error) => {
