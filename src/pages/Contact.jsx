@@ -79,28 +79,29 @@ const Contact = () => {
               placeholder="Your message here"
             />
           </div>
-          <input
-            type="submit"
-            value="Send"
-            className="w-[200px] h-[50px] text-center leading-[50px] bg-[#262626] text-[white] font-sans text-[14px] font-bold cursor-pointer"
-            onClick={handleSubmit}
-          />
+          <div onClick={handleSubmit}>
+            <input
+              type="submit"
+              value="Send"
+              className="w-[200px] h-[50px] text-center leading-[50px] bg-[#262626] text-[white] font-sans text-[14px] font-bold cursor-pointer"
+            />
+          </div>
           <div className="py-[64px]">
             <img src={ContactImg} alt="ContactImg" className="w-full" />
           </div>
-          <ToastContainer
-            position="top-right"
-            autoClose={800}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme="light"
-          />
         </form>
+        <ToastContainer
+          position="top-right"
+          autoClose={800}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
       </Container>
     </>
   );
