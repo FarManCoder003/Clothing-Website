@@ -40,9 +40,9 @@ const Contact = () => {
             Fill up a Form
           </div>
           <div className="">
-            <label className="block text-[#262626] font-sans font-bold text-sm lg:text-[16px]">
+            <div className=" text-[#262626] font-sans font-bold text-sm lg:text-[16px]">
               Name
-            </label>
+            </div>
             <input
               type="text"
               name="from_name"
@@ -51,9 +51,9 @@ const Contact = () => {
             />
           </div>
           <div className="">
-            <label className="block text-[#262626] font-sans font-bold text-sm lg:text-[16px]">
+            <div className="text-[#262626] font-sans font-bold text-sm lg:text-[16px]">
               Email
-            </label>
+            </div>
             <input
               type="email"
               name="user_email"
@@ -62,9 +62,9 @@ const Contact = () => {
             />
           </div>
           <div className="">
-            <label className="block text-[#262626] font-sans font-bold text-sm lg:text-[16px]">
+            <div className="text-[#262626] font-sans font-bold text-sm lg:text-[16px]">
               Message
-            </label>
+            </div>
             <textarea
               name="message"
               className="w-full text-[#767676] font-sans font-bold text-[14px] pt-[10px] pb-[48px] lg:pb-[87px] border-b border-[#F0F0F0] mt-[10px] mb-[24px] outline-none"
