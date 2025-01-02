@@ -57,7 +57,7 @@ const Contact = () => {
             </div>
             <input
               type="email"
-              name="user_email"
+              name="from_email"
               className="w-full text-[#767676] font-sans font-bold text-[14px] pt-[10px] pb-[16px] border-b border-[#F0F0F0] mt-[10px] mb-[24px] outline-none"
               placeholder="Your email here"
             />
