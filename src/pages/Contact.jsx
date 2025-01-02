@@ -1,6 +1,8 @@
 import emailjs from "@emailjs/browser";
 import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import ContactImg from "../assets/Contact.png";
 import Container from "../components/Container";
 const Contact = () => {
@@ -27,6 +29,11 @@ const Contact = () => {
         }
       );
   };
+
+  let handleSubmit = () => {
+    toast("Mail sent");
+  };
+
   return (
     <>
       <Container>
@@ -76,10 +83,23 @@ const Contact = () => {
             type="submit"
             value="Send"
             className="w-[200px] h-[50px] text-center leading-[50px] bg-[#262626] text-[white] font-sans text-[14px] font-bold cursor-pointer"
+            onClick={handleSubmit}
           />
           <div className="py-[64px]">
             <img src={ContactImg} alt="ContactImg" className="w-full" />
           </div>
+          <ToastContainer
+            position="top-right"
+            autoClose={800}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+          />
         </form>
       </Container>
     </>
