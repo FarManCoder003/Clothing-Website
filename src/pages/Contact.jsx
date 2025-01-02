@@ -72,10 +72,10 @@ const Contact = () => {
               placeholder="Your message here"
             />
           </div>
-          <button
+          <input
             type="submit"
             value="Send"
-            className="w-[200px] h-[50px] text-center leading-[50px] bg-[#262626] text-[white] font-sans text-[14px] font-bold pointer"
+            className="w-[200px] h-[50px] text-center leading-[50px] bg-[#262626] text-[white] font-sans text-[14px] font-bold cursor-pointer"
           />
           <div className="py-[64px]">
             <img src={ContactImg} alt="ContactImg" className="w-full" />
