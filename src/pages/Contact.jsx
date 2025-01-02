@@ -3,8 +3,7 @@ import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import ContactImg from "../assets/Contact.png";
 import Container from "../components/Container";
-
-export const Contact = () => {
+const Contact = () => {
   useEffect(() => {
     window.scrollTo({ top: 0 });
   });
@@ -85,3 +84,5 @@ export const Contact = () => {
     </>
   );
 };
+
+export default Contact;
