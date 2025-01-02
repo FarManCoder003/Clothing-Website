@@ -40,9 +40,9 @@ const Contact = () => {
             Fill up a Form
           </div>
           <div className="">
-            <label className="text-[#262626] font-sans font-bold text-sm lg:text-[16px]">
+            <div className="text-[#262626] font-sans font-bold text-sm lg:text-[16px]">
               Name
-            </label>
+            </div>
             <input
               type="text"
               name="from_name"
